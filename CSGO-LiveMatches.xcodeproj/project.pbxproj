@@ -1,0 +1,572 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07DECCDA29F6EF9B0023708B /* CSGO_LiveMatchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DECCD929F6EF9B0023708B /* CSGO_LiveMatchesApp.swift */; };
+		07DECCDC29F6EF9B0023708B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DECCDB29F6EF9B0023708B /* ContentView.swift */; };
+		07DECCDE29F6EF9E0023708B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07DECCDD29F6EF9E0023708B /* Assets.xcassets */; };
+		07DECCE129F6EF9E0023708B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07DECCE029F6EF9E0023708B /* Preview Assets.xcassets */; };
+		07DECCEB29F6EF9E0023708B /* CSGO_LiveMatchesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DECCEA29F6EF9E0023708B /* CSGO_LiveMatchesTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		07DECCE729F6EF9E0023708B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07DECCCE29F6EF9B0023708B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07DECCD529F6EF9B0023708B;
+			remoteInfo = "CSGO-LiveMatches";
+		};
+		07DECCF129F6EF9E0023708B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07DECCCE29F6EF9B0023708B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07DECCD529F6EF9B0023708B;
+			remoteInfo = "CSGO-LiveMatches";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		07DECCD629F6EF9B0023708B /* CSGO-LiveMatches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CSGO-LiveMatches.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07DECCD929F6EF9B0023708B /* CSGO_LiveMatchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSGO_LiveMatchesApp.swift; sourceTree = "<group>"; };
+		07DECCDB29F6EF9B0023708B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		07DECCDD29F6EF9E0023708B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		07DECCE029F6EF9E0023708B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		07DECCE629F6EF9E0023708B /* CSGO-LiveMatchesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CSGO-LiveMatchesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07DECCEA29F6EF9E0023708B /* CSGO_LiveMatchesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSGO_LiveMatchesTests.swift; sourceTree = "<group>"; };
+		07DECCF029F6EF9E0023708B /* CSGO-LiveMatchesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CSGO-LiveMatchesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07DECCD329F6EF9B0023708B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07DECCE329F6EF9E0023708B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07DECCED29F6EF9E0023708B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07DECCCD29F6EF9B0023708B = {
+			isa = PBXGroup;
+			children = (
+				07DECCD829F6EF9B0023708B /* CSGO-LiveMatches */,
+				07DECCE929F6EF9E0023708B /* CSGO-LiveMatchesTests */,
+				07DECCD729F6EF9B0023708B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		07DECCD729F6EF9B0023708B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07DECCD629F6EF9B0023708B /* CSGO-LiveMatches.app */,
+				07DECCE629F6EF9E0023708B /* CSGO-LiveMatchesTests.xctest */,
+				07DECCF029F6EF9E0023708B /* CSGO-LiveMatchesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		07DECCD829F6EF9B0023708B /* CSGO-LiveMatches */ = {
+			isa = PBXGroup;
+			children = (
+				07DECCD929F6EF9B0023708B /* CSGO_LiveMatchesApp.swift */,
+				07DECCDB29F6EF9B0023708B /* ContentView.swift */,
+				07DECCDD29F6EF9E0023708B /* Assets.xcassets */,
+				07DECCDF29F6EF9E0023708B /* Preview Content */,
+			);
+			path = "CSGO-LiveMatches";
+			sourceTree = "<group>";
+		};
+		07DECCDF29F6EF9E0023708B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				07DECCE029F6EF9E0023708B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		07DECCE929F6EF9E0023708B /* CSGO-LiveMatchesTests */ = {
+			isa = PBXGroup;
+			children = (
+				07DECCEA29F6EF9E0023708B /* CSGO_LiveMatchesTests.swift */,
+			);
+			path = "CSGO-LiveMatchesTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		07DECCD529F6EF9B0023708B /* CSGO-LiveMatches */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07DECCFA29F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSGO-LiveMatches" */;
+			buildPhases = (
+				07DECCD229F6EF9B0023708B /* Sources */,
+				07DECCD329F6EF9B0023708B /* Frameworks */,
+				07DECCD429F6EF9B0023708B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CSGO-LiveMatches";
+			productName = "CSGO-LiveMatches";
+			productReference = 07DECCD629F6EF9B0023708B /* CSGO-LiveMatches.app */;
+			productType = "com.apple.product-type.application";
+		};
+		07DECCE529F6EF9E0023708B /* CSGO-LiveMatchesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07DECCFD29F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSGO-LiveMatchesTests" */;
+			buildPhases = (
+				07DECCE229F6EF9E0023708B /* Sources */,
+				07DECCE329F6EF9E0023708B /* Frameworks */,
+				07DECCE429F6EF9E0023708B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				07DECCE829F6EF9E0023708B /* PBXTargetDependency */,
+			);
+			name = "CSGO-LiveMatchesTests";
+			productName = "CSGO-LiveMatchesTests";
+			productReference = 07DECCE629F6EF9E0023708B /* CSGO-LiveMatchesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		07DECCEF29F6EF9E0023708B /* CSGO-LiveMatchesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07DECD0029F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSGO-LiveMatchesUITests" */;
+			buildPhases = (
+				07DECCEC29F6EF9E0023708B /* Sources */,
+				07DECCED29F6EF9E0023708B /* Frameworks */,
+				07DECCEE29F6EF9E0023708B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				07DECCF229F6EF9E0023708B /* PBXTargetDependency */,
+			);
+			name = "CSGO-LiveMatchesUITests";
+			productName = "CSGO-LiveMatchesUITests";
+			productReference = 07DECCF029F6EF9E0023708B /* CSGO-LiveMatchesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		07DECCCE29F6EF9B0023708B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					07DECCD529F6EF9B0023708B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					07DECCE529F6EF9E0023708B = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 07DECCD529F6EF9B0023708B;
+					};
+					07DECCEF29F6EF9E0023708B = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 07DECCD529F6EF9B0023708B;
+					};
+				};
+			};
+			buildConfigurationList = 07DECCD129F6EF9B0023708B /* Build configuration list for PBXProject "CSGO-LiveMatches" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 07DECCCD29F6EF9B0023708B;
+			productRefGroup = 07DECCD729F6EF9B0023708B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				07DECCD529F6EF9B0023708B /* CSGO-LiveMatches */,
+				07DECCE529F6EF9E0023708B /* CSGO-LiveMatchesTests */,
+				07DECCEF29F6EF9E0023708B /* CSGO-LiveMatchesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		07DECCD429F6EF9B0023708B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07DECCE129F6EF9E0023708B /* Preview Assets.xcassets in Resources */,
+				07DECCDE29F6EF9E0023708B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07DECCE429F6EF9E0023708B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07DECCEE29F6EF9E0023708B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07DECCD229F6EF9B0023708B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07DECCDC29F6EF9B0023708B /* ContentView.swift in Sources */,
+				07DECCDA29F6EF9B0023708B /* CSGO_LiveMatchesApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07DECCE229F6EF9E0023708B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07DECCEB29F6EF9E0023708B /* CSGO_LiveMatchesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07DECCEC29F6EF9E0023708B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		07DECCE829F6EF9E0023708B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07DECCD529F6EF9B0023708B /* CSGO-LiveMatches */;
+			targetProxy = 07DECCE729F6EF9E0023708B /* PBXContainerItemProxy */;
+		};
+		07DECCF229F6EF9E0023708B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07DECCD529F6EF9B0023708B /* CSGO-LiveMatches */;
+			targetProxy = 07DECCF129F6EF9E0023708B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		07DECCF829F6EF9E0023708B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		07DECCF929F6EF9E0023708B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		07DECCFB29F6EF9E0023708B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CSGO-LiveMatches/Preview Content\"";
+				DEVELOPMENT_TEAM = F9DP8D3V7J;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.PedroVargas.CSGO-LiveMatches";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		07DECCFC29F6EF9E0023708B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CSGO-LiveMatches/Preview Content\"";
+				DEVELOPMENT_TEAM = F9DP8D3V7J;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.PedroVargas.CSGO-LiveMatches";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		07DECCFE29F6EF9E0023708B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F9DP8D3V7J;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.PedroVargas.CSGO-LiveMatchesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CSGO-LiveMatches.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CSGO-LiveMatches";
+			};
+			name = Debug;
+		};
+		07DECCFF29F6EF9E0023708B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F9DP8D3V7J;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.PedroVargas.CSGO-LiveMatchesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CSGO-LiveMatches.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CSGO-LiveMatches";
+			};
+			name = Release;
+		};
+		07DECD0129F6EF9E0023708B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F9DP8D3V7J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.PedroVargas.CSGO-LiveMatchesUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "CSGO-LiveMatches";
+			};
+			name = Debug;
+		};
+		07DECD0229F6EF9E0023708B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F9DP8D3V7J;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.PedroVargas.CSGO-LiveMatchesUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "CSGO-LiveMatches";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		07DECCD129F6EF9B0023708B /* Build configuration list for PBXProject "CSGO-LiveMatches" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07DECCF829F6EF9E0023708B /* Debug */,
+				07DECCF929F6EF9E0023708B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07DECCFA29F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSGO-LiveMatches" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07DECCFB29F6EF9E0023708B /* Debug */,
+				07DECCFC29F6EF9E0023708B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07DECCFD29F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSGO-LiveMatchesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07DECCFE29F6EF9E0023708B /* Debug */,
+				07DECCFF29F6EF9E0023708B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07DECD0029F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSGO-LiveMatchesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07DECD0129F6EF9E0023708B /* Debug */,
+				07DECD0229F6EF9E0023708B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 07DECCCE29F6EF9B0023708B /* Project object */;
+}
