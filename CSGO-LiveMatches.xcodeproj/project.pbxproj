@@ -40,7 +40,6 @@
 		07DECCE629F6EF9E0023708B /* CSGO-LiveMatchesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CSGO-LiveMatchesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07DECCEA29F6EF9E0023708B /* CSGO_LiveMatchesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSGO_LiveMatchesTests.swift; sourceTree = "<group>"; };
 		07DECCF029F6EF9E0023708B /* CSGO-LiveMatchesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CSGO-LiveMatchesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		07DFA25C29F6F0EA0032689B /* Modules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Modules; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +70,6 @@
 		07DECCCD29F6EF9B0023708B = {
 			isa = PBXGroup;
 			children = (
-				07DFA25C29F6F0EA0032689B /* Modules */,
 				07DECCD829F6EF9B0023708B /* CSGO-LiveMatches */,
 				07DECCE929F6EF9E0023708B /* CSGO-LiveMatchesTests */,
 				07DECCD729F6EF9B0023708B /* Products */,
