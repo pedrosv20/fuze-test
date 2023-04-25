@@ -13,13 +13,12 @@ let package = Package(
             targets: ["Networking"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/pointfreeco/swift-composable-architecture", branch: "main")
     ],
     targets: [
-        // Networking
-        .networking,
-        .networkingTests,
+        // CSGOMatchesService
+        .csgoMatchesServiceLive,
+        .csgoMatchesService,
         
         // Matches List
         .matchesList,
@@ -28,14 +27,18 @@ let package = Package(
 )
 
 fileprivate extension Target {
-    static var networking = Target.target(
-        name: "Networking",
-        dependencies: []
+    static var csgoMatchesServiceLive = Target.target(
+        name: "CSGOMatchesServiceLive",
+        dependencies: [
+            "CSGOMatchesService"
+        ]
     )
     
-    static var networkingTests = Target.testTarget(
-        name: "NetworkingTests",
-        dependencies: ["Networking"]
+    static var csgoMatchesService = Target.target(
+        name: "CSGOMatchesService",
+        dependencies: [
+            .product(name: "Dependencies", package: "swift-composable-architecture")
+        ]
     )
 }
 
