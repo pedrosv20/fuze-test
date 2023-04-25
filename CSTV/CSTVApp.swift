@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct CSGO_LiveMatchesApp: App {
+struct CSTVApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

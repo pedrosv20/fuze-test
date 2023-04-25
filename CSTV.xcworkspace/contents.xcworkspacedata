@@ -5,6 +5,6 @@
       location = "group:Modules">
    </FileRef>
    <FileRef
-      location = "group:CSGO-LiveMatches.xcodeproj">
+      location = "group:/Users/pedrovargas/Documents/Fuze/fuze-test/CSTV.xcodeproj">
    </FileRef>
 </Workspace>

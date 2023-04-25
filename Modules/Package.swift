@@ -8,9 +8,9 @@ let package = Package(
     platforms: [.iOS(.v16)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "Networking",
-            targets: ["Networking"]),
+        .library(name: "Networking", targets: ["Networking"]),
+        .library(name: "CSGOMatchesServiceLive", targets: ["CSGOMatchesServiceLive"]),
+        .library(name: "CSGOMatchesService", targets: ["CSGOMatchesService"]),
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", branch: "main")
@@ -23,6 +23,9 @@ let package = Package(
         // Matches List
         .matchesList,
         .matchesListTests,
+        
+        // Networking
+        .networking,
     ]
 )
 
@@ -30,14 +33,17 @@ fileprivate extension Target {
     static var csgoMatchesServiceLive = Target.target(
         name: "CSGOMatchesServiceLive",
         dependencies: [
-            "CSGOMatchesService"
+            "CSGOMatchesService",
+            "Networking"
         ]
     )
     
     static var csgoMatchesService = Target.target(
         name: "CSGOMatchesService",
         dependencies: [
-            .product(name: "Dependencies", package: "swift-composable-architecture")
+            "Networking"
+//            .product(name: "Dependencies", package: "swift-composable-architecture"),
+            
         ]
     )
 }
@@ -51,5 +57,12 @@ fileprivate extension Target {
     static var matchesListTests = Target.testTarget(
         name: "MatchesListTests",
         dependencies: ["MatchesList"]
+    )
+}
+
+fileprivate extension Target {
+    static var networking = Target.target(
+        name: "Networking",
+        dependencies: []
     )
 }
