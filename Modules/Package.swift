@@ -13,7 +13,8 @@ let package = Package(
         .library(name: "CSGOMatchesService", targets: ["CSGOMatchesService"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/pointfreeco/swift-composable-architecture", branch: "main")
+        .package(url: "https://github.com/pointfreeco/swift-composable-architecture", branch: "main"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies", branch: "main")
     ],
     targets: [
         // CSGOMatchesService
@@ -33,16 +34,15 @@ fileprivate extension Target {
     static var csgoMatchesServiceLive = Target.target(
         name: "CSGOMatchesServiceLive",
         dependencies: [
-            "CSGOMatchesService",
-            "Networking"
+            "CSGOMatchesService"
         ]
     )
     
     static var csgoMatchesService = Target.target(
         name: "CSGOMatchesService",
         dependencies: [
-            "Networking"
-//            .product(name: "Dependencies", package: "swift-composable-architecture"),
+            "Networking",
+            .product(name: "Dependencies", package: "swift-dependencies"),
             
         ]
     )

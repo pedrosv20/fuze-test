@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		077B39C229F8158C00FAF077 /* CSGOMatchesService in Frameworks */ = {isa = PBXBuildFile; productRef = 077B39C129F8158C00FAF077 /* CSGOMatchesService */; };
-		077B39C429F8158C00FAF077 /* CSGOMatchesServiceLive in Frameworks */ = {isa = PBXBuildFile; productRef = 077B39C329F8158C00FAF077 /* CSGOMatchesServiceLive */; };
-		077B39C629F8158C00FAF077 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 077B39C529F8158C00FAF077 /* Networking */; };
+		0747A84029F82B850098D84B /* CSGOMatchesServiceLive in Frameworks */ = {isa = PBXBuildFile; productRef = 0747A83F29F82B850098D84B /* CSGOMatchesServiceLive */; };
 		07DECCDA29F6EF9B0023708B /* CSTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DECCD929F6EF9B0023708B /* CSTVApp.swift */; };
 		07DECCDC29F6EF9B0023708B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DECCDB29F6EF9B0023708B /* ContentView.swift */; };
 		07DECCDE29F6EF9E0023708B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07DECCDD29F6EF9E0023708B /* Assets.xcassets */; };
@@ -28,12 +26,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07314A5929F773F900E8811F /* MatchesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesListView.swift; sourceTree = "<group>"; };
-		0755CE4329F77520003288E9 /* MatchesList */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MatchesList; path = Modules/Sources/MatchesList; sourceTree = "<group>"; };
-		0755CE4429F77595003288E9 /* CSTVMatchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CSTVMatchService.swift; path = Modules/Sources/CSGOMatchesService/CSTVMatchService.swift; sourceTree = "<group>"; };
-		07B2BCBD29F7738B00B735B2 /* CSGOMatchesService */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CSGOMatchesService; path = Modules/Sources/CSGOMatchesService; sourceTree = "<group>"; };
-		07B2BCBE29F7739000B735B2 /* CSGOMatchesServiceLive */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CSGOMatchesServiceLive; path = Modules/Sources/CSGOMatchesServiceLive; sourceTree = "<group>"; };
-		07B2BCBF29F7739300B735B2 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Networking; path = Modules/Sources/Networking; sourceTree = "<group>"; };
 		07DECCD629F6EF9B0023708B /* CSTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07DECCD929F6EF9B0023708B /* CSTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVApp.swift; sourceTree = "<group>"; };
 		07DECCDB29F6EF9B0023708B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,9 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				077B39C629F8158C00FAF077 /* Networking in Frameworks */,
-				077B39C429F8158C00FAF077 /* CSGOMatchesServiceLive in Frameworks */,
-				077B39C229F8158C00FAF077 /* CSGOMatchesService in Frameworks */,
+				0747A84029F82B850098D84B /* CSGOMatchesServiceLive in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,24 +54,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07314A5829F773F900E8811F /* MatchesList */ = {
-			isa = PBXGroup;
-			children = (
-				07314A5929F773F900E8811F /* MatchesListView.swift */,
-			);
-			name = MatchesList;
-			path = Modules/Sources/MatchesList;
-			sourceTree = "<group>";
-		};
 		07B2BCBC29F7738B00B735B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0755CE4429F77595003288E9 /* CSTVMatchService.swift */,
-				0755CE4329F77520003288E9 /* MatchesList */,
-				07314A5829F773F900E8811F /* MatchesList */,
-				07B2BCBF29F7739300B735B2 /* Networking */,
-				07B2BCBE29F7739000B735B2 /* CSGOMatchesServiceLive */,
-				07B2BCBD29F7738B00B735B2 /* CSGOMatchesService */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -149,9 +124,7 @@
 			);
 			name = CSTV;
 			packageProductDependencies = (
-				077B39C129F8158C00FAF077 /* CSGOMatchesService */,
-				077B39C329F8158C00FAF077 /* CSGOMatchesServiceLive */,
-				077B39C529F8158C00FAF077 /* Networking */,
+				0747A83F29F82B850098D84B /* CSGOMatchesServiceLive */,
 			);
 			productName = "CSGO-LiveMatches";
 			productReference = 07DECCD629F6EF9B0023708B /* CSTV.app */;
@@ -506,17 +479,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		077B39C129F8158C00FAF077 /* CSGOMatchesService */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CSGOMatchesService;
-		};
-		077B39C329F8158C00FAF077 /* CSGOMatchesServiceLive */ = {
+		0747A83F29F82B850098D84B /* CSGOMatchesServiceLive */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CSGOMatchesServiceLive;
-		};
-		077B39C529F8158C00FAF077 /* Networking */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Networking;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -2,10 +2,21 @@ import Foundation
 import Networking
 import CSGOMatchesService
 
-public struct CSTVMatchesServiceLive: HTTPClient, CSTVMatchesService {
-    public func getMatchesList() async -> [CSMatch] {
-        return await request(from: .matchesList, responseModel: [CSMatch.self])
+public extension CSTVMatchesService {
+    static let live: Self = .init {
+        // request
+        return HTTPClient.shared.request(
+            from: CSTVEndpoint.matchesList,
+            responseModel: [MatchesData].self
+        )
+        
+    } getMatchDetail: { matchID in
+        // request
+        return HTTPClient.shared.request(
+            from: CSTVEndpoint.matchesList,
+            responseModel: MatchesData.self
+        )
+        
+        
     }
-    public func getMatchDetail(_ matchID: MatchID) async -> throws CSMatch {}
-    
 }

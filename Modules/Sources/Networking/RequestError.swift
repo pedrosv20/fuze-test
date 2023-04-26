@@ -1,4 +1,4 @@
-public enum RequestError: Error {
+public enum RequestError: Error, Equatable {
     case decode(String)
     case unauthorized
     case invalidURL

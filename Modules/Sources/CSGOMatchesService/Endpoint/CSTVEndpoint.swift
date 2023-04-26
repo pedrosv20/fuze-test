@@ -10,9 +10,9 @@ extension CSTVEndpoint: Endpoint {
     public var path: String {
         switch self {
         case .matchesList:
-            return scheme + "://" + host + "/csgo/matches/running"
+            return "/csgo/matches"
         case let .matchDetail(id):
-            return scheme + "://" + host + "/csgo/matches/\(id)"
+            return "/csgo/matches/\(id)"
         }
     }
 
@@ -27,6 +27,7 @@ extension CSTVEndpoint: Endpoint {
         switch self {
         case .matchesList, .matchDetail:
             return [
+                "Authorization": "Bearer 41vFiGMXjPUhbd_RsTSGlo3mMgUrW1DEpiNkzexResSr5cV8Rbg",
                 "accept": "application/json"
             ]
         }
