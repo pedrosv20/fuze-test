@@ -1,7 +1,8 @@
 import Combine
 import SwiftUI
-import CSGOMatchesServiceLive
-import CSGOMatchesService
+import CSTVMatchesServiceLive
+import CSTVMatchesService
+import MatchesListFeature
 
 public class Teste {
     var cancellables: Set<AnyCancellable> = []
@@ -10,20 +11,7 @@ public class Teste {
 struct ContentView: View {
     var teste: Teste = .init()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .onAppear {
-            CSTVMatchesService.live.getMatchesList().sink(receiveCompletion: { _ in }, receiveValue: { response in
-                print(response.map { $0.name })
-            })
-            .store(in: &teste.cancellables)
-            
-        }
-        .padding()
+        MatchesListView(store: .init(initialState: .init(matchesData: []), reducer: MatchesList()))
     }
 }
 

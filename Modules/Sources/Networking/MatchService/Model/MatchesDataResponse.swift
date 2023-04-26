@@ -1,6 +1,6 @@
 import Foundation
 
-public struct MatchesData: Decodable {
+public struct MatchesDataResponse: Decodable {
     public let beginAt: String?
     public let id: Int
     public let league: League
