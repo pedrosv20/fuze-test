@@ -54,10 +54,28 @@ public struct MatchDetailView: View {
                 }
                 .padding(.top, 16)
                 
+                if match.status == .running {
+                    VStack {
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor( Color.red)
+                            .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.12)
+                            .overlay {
+                                Text("Live")
+                                    .font(Font.caption.weight(.bold))
+                                    .foregroundColor(.white)
+                            }
+                        
+                        Text("Hoje \(match.beginAt.formatted(date: .omitted, time: .shortened))")
+                            .font(Font.caption.weight(.bold))
+                            .foregroundColor(.white)
+                    }
+                    
+                } else {
+                    Text(match.beginAt.formatted(date: .abbreviated, time: .shortened))
+                        .font(Font.caption.weight(.bold))
+                        .foregroundColor(.white)
+                }
                 
-                Text("Hoje \(match.beginAt.formatted(date: .omitted, time: .shortened))")
-                    .font(Font.caption.weight(.bold))
-                    .foregroundColor(.white)// TODO: -  get hour
                 
                 // PlayersView
                 HStack {
@@ -149,7 +167,7 @@ public struct MatchDetailView: View {
 //    }
 //}
 
-
+// TODO: - Create CommonExtensions Module
 struct RoundedCorner: Shape {
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners

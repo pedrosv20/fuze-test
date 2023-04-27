@@ -3,8 +3,6 @@ import Foundation
 public enum CSTVEndpoint {
     case matchesList(page: String, sort: String)
     case getPlayers(teamID: String)
-    // tinha criado um matchDetail para pegar o ID da partida especifica e puxar as infos porém não tenho o acesso. This endpoint is only available to customers with a historical or real-time data plan
-    // utilizarei a mesma resposta do matchesLIst e filtrarei pelo ID que preciso que foi clicado
 }
 
 extension CSTVEndpoint: Endpoint {
@@ -46,17 +44,11 @@ extension CSTVEndpoint: Endpoint {
         case let .matchesList(page, sort):
             return [
                 "page": page,
-                "sort": sort
+                "sort": sort,
+                "filter[status]": "not_started, running"
                 ]
         case let .getPlayers(id):
             return ["filter[id]": id]
         }
     }
 }
-//
-//let date = Date()
-//
-//let iso8601DateFormatter = ISO8601DateFormatter()
-//iso8601DateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-//iso8601DateFormatter.timeZone = .current
-//let formattedDate = iso8601DateFormatter.string(from: date)
