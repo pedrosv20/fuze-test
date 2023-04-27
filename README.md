@@ -1,5 +1,10 @@
 # Fuze CSTV App
 
+O que está pronto
+* LaunchScreen (com algum bugzinho na logo que ela está ficando muito grande. no Iphone SE fica correto (tentei usar ela pelo storyboard também e deu problema.))
+* MatchesList com pull to refresh e paginação
+* MatchDetail
+
 ## App desenvolvido em SwiftUI usando TCA (The Composable Architecture) para construção das views e suas interações
 
 * Para rodar o projeto somente abrir o CSTV.xcworkspace onde terá o CSTV target e o Package Modules com as features modularizadas.
@@ -21,4 +26,12 @@ Sendo eles:
 -----------------
 ## Nas duas telas, dados que não existirem na API serão omitidos e circulos cinza serão colocados nas imagens que não existirem também.
 
-Na entrega final o app contará com testes unitarios dos controladores lógicos das telas e testes de snapshot.
+-----------------
+
+
+
+## Na entrega final o app contará com testes unitarios dos controladores lógicos das telas e testes de snapshot.
+
+
+
+Tive problemas para usar o endpoint de pegar uma partida pelo ID pois precisava de uma conta paga. Dessa maneira precisei pensar outra forma de conseguir pegar os jogadores de cada time. Com isso usei o endpoint de teams para pegar os players e mostrar na tela de detalhe.
