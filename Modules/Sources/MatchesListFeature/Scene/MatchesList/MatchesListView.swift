@@ -192,9 +192,9 @@ struct MatchesListView_Previews: PreviewProvider {
     }
 }
 
-// TODO: -  add design system to spacing and round corners and colors
+// TODO: -  Create design system to spacing and round corners and colors
 
-// TODO: - adicionar em outro lugar
+// TODO: - Common Extension Modules
 extension Collection {
     /// Returns the element at the specified index if it is within bounds, otherwise nil.
     subscript (safe index: Index) -> Element? {
