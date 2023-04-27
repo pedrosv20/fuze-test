@@ -8,10 +8,16 @@ public struct MatchesList: ReducerProtocol {
         var goToDetail = false
         var matchDetailSelected: MatchesData? = nil
         var currentPage: Int
+        var finishDownloading: Bool
 
-        public init(currentPage: Int = 0, matchesData: [MatchesData]) {
+        public init(
+            currentPage: Int = 0,
+            matchesData: [MatchesData],
+            finishDownloading: Bool = false
+        ) {
             self.currentPage = currentPage
             self.matchesData = matchesData
+            self.finishDownloading = finishDownloading
         }
     }
 
@@ -36,7 +42,12 @@ public struct MatchesList: ReducerProtocol {
                 
 
             case let .handleRequestedData(.success(model)):
-                state.matchesData = model
+                for match in model {
+                    state.matchesData.append(match)
+                }
+                if model.count < 10 {
+                    state.finishDownloading = true
+                }
                 return .none
                 
             case let .handleRequestedData(.failure(error)):
@@ -44,7 +55,9 @@ public struct MatchesList: ReducerProtocol {
                 return .none
             
             case .refresh:
-                return .none
+                state.matchesData = []
+                state.currentPage = 0
+                return .init(value: .requestData)
             
             case let .matchselected(id):
                 guard let matchDetail = state.matchesData.filter({ $0.id == id }).first else {
@@ -62,9 +75,9 @@ public struct MatchesList: ReducerProtocol {
                 return .none
 
             case .requestData:
-//                state.currentPage += 1
+                state.currentPage += 1
                 return matchesService
-                    .getMatchesList("1", "")
+                    .getMatchesList("\(state.currentPage)", "")
                     .receive(on: mainQueue)
                     .catchToEffect()
                     .map(Action.handleRequestedData)

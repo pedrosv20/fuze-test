@@ -11,20 +11,27 @@ public struct MatchDetailView: View {
 
     public var body: some View {
         WithViewStore(store) { viewStore in
-            if
-                let matchData = viewStore.matchData,
-                let playersTeam1 = viewStore.playersTeam1,
-                let playersTeam2 = viewStore.playersTeam2 {
-                VStack {
-                    // TODO: - Get serie name
-                    matchView(matchData, playersTeam1, playersTeam2)
+            ZStack {
+                Color(hex: "161621")
+                    .ignoresSafeArea()
+                if
+                    let matchData = viewStore.matchData,
+                    let playersTeam1 = viewStore.playersTeam1,
+                    let playersTeam2 = viewStore.playersTeam2 {
+                    VStack {
+                        matchView(matchData, playersTeam1, playersTeam2)
+                    }
+                    .navigationTitle(matchData.league.name)
+                    .toolbarColorScheme(.dark, for: .navigationBar)
+                    .toolbarBackground(Visibility.visible, for: .navigationBar)
+                    .navigationBarTitleDisplayMode(.inline)
+                    
+                } else {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .onAppear { viewStore.send(.onAppear) }
+                        .navigationTitle("")
                 }
-                .navigationTitle(matchData.league.name)
-            } else {
-                ProgressView()
-                    .progressViewStyle(.circular)
-                    .onAppear { viewStore.send(.onAppear) }
-                    .navigationTitle("")
             }
         }
         
@@ -40,7 +47,8 @@ public struct MatchDetailView: View {
                     
                     
                     Text("VS")
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
+                        .font(.system(size: 12))
                     
                     if let opponents = match.opponents[safe: 1],
                        let opponent2 = opponents.opponent {
@@ -49,7 +57,9 @@ public struct MatchDetailView: View {
                 }
                 .padding(.top, 16)
 
-                Text("Hoje as 21") // TODO: -  get hour
+                Text("Hoje, 21:00")
+                    .font(.system(size: 12))
+                    .foregroundColor(.white)// TODO: -  get hour
                 
                 // PlayersView
                 HStack {
@@ -57,16 +67,32 @@ public struct MatchDetailView: View {
                     playersView(playersTeam2, alignment: .trailing)
                 }
             }
-            .foregroundColor(Color.green)
     }
 
     func teamView(_ opponent: MatchesData.Opponent) -> some View {
         VStack(spacing: .zero) {
             Circle()
-                .foregroundColor(.red)
+                .foregroundColor(.clear)
                 .padding(26)
+                .overlay {
+                    AsyncImage(url: URL(string: opponent.imageURL ?? "")) { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(26)
+                    } placeholder: {
+                        if let imageURL = opponent.imageURL,
+                           let _ = URL(string: imageURL) {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        } else {
+                            Circle().foregroundColor(.gray)
+                        }
+                         
+                    }
+                }
             Text(opponent.name)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
+                .font(.system(size: 10))
         }
         .padding(.vertical)
     }
@@ -76,21 +102,39 @@ public struct MatchDetailView: View {
             ForEach(players, id: \.name) { player in
                 Rectangle()
                     .roundedCorner(8, corners: alignment == .leading ? [.bottomRight, .topRight] : [.bottomLeft, .topLeft])
-                    .foregroundColor(.red)
+                    .foregroundColor(Color(hex: "272639"))
                     .overlay {
-                        HStack {
+                        HStack(spacing: 12) {
+                            Spacer()
                             VStack(alignment: .trailing) {
                                 Text(player.name)
-                                Text("nome completo"/*"\(player.firstName) \(player.lastName)"*/)
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.white)
+                                Text("\(player.firstName) \(player.lastName)")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 12))
                             }
                             .frame(alignment: .trailing)
                             
-                            RoundedRectangle(cornerRadius: 8)
-                                .frame(width: 60, height: 60)
-                                .foregroundColor(.blue)
-                                .offset(x: -5, y: -7)
-                        }
-                        .environment(\.layoutDirection, alignment == .leading ? .leftToRight : .rightToLeft)
+                            AsyncImage(url: player.imageURL) { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 60, height: 60)
+                            } placeholder: {
+                                if player.imageURL != nil {
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                } else {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .frame(width: 60, height: 60)
+                                        .foregroundColor(.gray)
+                                }
+                                
+                            }
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .offset(x: -5, y: -7)
+                    }
+                    .environment(\.layoutDirection, alignment == .leading ? .leftToRight : .rightToLeft)
                         
                     }
             }

@@ -25,6 +25,9 @@ public extension CSTVMatchesService {
                 name: data.league.name,
                 slug: data.league.slug
             ),
+            serie: .init(
+                fullName: data.serie.fullName
+            ),
             leagueID: String(data.leagueID),
             name: data.name,
             opponents: data.opponents.map {
@@ -53,7 +56,12 @@ public extension CSTVMatchesService {
             .map { response in
                 response[0].players.map { player in
         
-                        Players(name: player.name, imageURL: URL(string: player.imageURL ?? ""))
+                        Players(
+                            name: player.name,
+                            imageURL: URL(string: player.imageURL ?? ""),
+                            firstName: player.firstName,
+                            lastName: player.lastName
+                        )
     }
 //                response.map { data in
 //        data.players.map { player in

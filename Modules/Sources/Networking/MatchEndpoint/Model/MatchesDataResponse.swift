@@ -4,6 +4,7 @@ public struct MatchesDataResponse: Decodable {
     public let beginAt: String?
     public let id: Int
     public let league: League
+    public let serie: Serie
     public let leagueID: Int
     public let name: String
     public let opponents: [Opponents]
@@ -11,13 +12,14 @@ public struct MatchesDataResponse: Decodable {
     public enum CodingKeys: String, CodingKey {
         case beginAt  = "begin_at"
         case leagueID = "league_id"
-        case id, league, name, opponents
+        case id, league, name, opponents, serie
     }
     
     public init(
         beginAt: String?,
         id: Int,
         league: League,
+        serie: Serie,
         leagueID: Int,
         name: String,
         opponents: [Opponents]
@@ -25,6 +27,7 @@ public struct MatchesDataResponse: Decodable {
         self.beginAt = beginAt
         self.id = id
         self.league = league
+        self.serie = serie
         self.leagueID = leagueID
         self.name = name
         self.opponents = opponents
@@ -33,7 +36,6 @@ public struct MatchesDataResponse: Decodable {
     public struct League: Decodable {
         public let id: Int
         public let imageURL: String?
-            // TODO: - in MatchesData change type to URL
         public let name: String
         public let slug: String
         
@@ -52,6 +54,20 @@ public struct MatchesDataResponse: Decodable {
             self.imageURL = imageURL
             self.name = name
             self.slug = slug
+        }
+    }
+    
+    public struct Serie: Decodable {
+        public let fullName: String
+        
+        public enum CodingKeys: String, CodingKey {
+            case fullName = "full_name"
+        }
+        
+        public init(
+            fullName: String
+        ) {
+            self.fullName = fullName
         }
     }
 
@@ -90,6 +106,7 @@ public extension MatchesDataResponse {
         beginAt: String? = "25/11/2000 - 16:00:00",
         id: Int = UUID().hashValue,
         league: League = .fixture(),
+        serie: Serie = .fixture(),
         leagueID: Int = UUID().hashValue,
         name: String = "match name",
         opponents: [Opponents] = [.fixture(), .fixture()]
@@ -98,9 +115,20 @@ public extension MatchesDataResponse {
             beginAt: beginAt,
             id: id,
             league: league,
+            serie: serie,
             leagueID: leagueID,
             name: name,
             opponents: opponents
+        )
+    }
+}
+
+public extension MatchesDataResponse.Serie {
+    static func fixture(
+        fullName: String = "Full name"
+    ) -> Self {
+        MatchesDataResponse.Serie(
+            fullName: fullName
         )
     }
 }

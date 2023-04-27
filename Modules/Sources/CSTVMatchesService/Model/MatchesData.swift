@@ -4,6 +4,7 @@ public struct MatchesData: Equatable {
     public let beginAt: String?
     public let id: String
     public let league: League
+    public let serie: Serie
     public let leagueID: String
     public let name: String
     public let opponents: [Opponents]
@@ -12,6 +13,7 @@ public struct MatchesData: Equatable {
         beginAt: String?,
         id: String,
         league: League,
+        serie: Serie,
         leagueID: String,
         name: String,
         opponents: [Opponents]
@@ -19,6 +21,7 @@ public struct MatchesData: Equatable {
         self.beginAt = beginAt
         self.id = id
         self.league = league
+        self.serie = serie
         self.leagueID = leagueID
         self.name = name
         self.opponents = opponents
@@ -40,6 +43,16 @@ public struct MatchesData: Equatable {
             self.imageURL = imageURL
             self.name = name
             self.slug = slug
+        }
+    }
+    
+    public struct Serie: Equatable {
+        public let fullName: String
+
+        public init(
+            fullName: String
+        ) {
+            self.fullName = fullName
         }
     }
 
@@ -73,6 +86,7 @@ public extension MatchesData {
         beginAt: String? = "25/11/2000 - 16:00:00",
         id: String = UUID().uuidString,
         league: League = .fixture(),
+        serie: Serie = .fixture(),
         leagueID: String = UUID().uuidString,
         name: String = "match name",
         opponents: [Opponents] = [.fixture(), .fixture()]
@@ -81,9 +95,20 @@ public extension MatchesData {
             beginAt: beginAt,
             id: id,
             league: league,
+            serie: serie,
             leagueID: leagueID,
             name: name,
             opponents: opponents
+        )
+    }
+}
+
+public extension MatchesData.Serie {
+    static func fixture(
+        fullName: String = "Full name"
+    ) -> Self {
+        MatchesData.Serie(
+            fullName: fullName
         )
     }
 }
