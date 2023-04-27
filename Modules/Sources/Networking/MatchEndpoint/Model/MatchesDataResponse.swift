@@ -7,12 +7,13 @@ public struct MatchesDataResponse: Decodable {
     public let serie: Serie
     public let leagueID: Int
     public let name: String
+    public let status: Status
     public let opponents: [Opponents]
 
     public enum CodingKeys: String, CodingKey {
         case beginAt  = "begin_at"
         case leagueID = "league_id"
-        case id, league, name, opponents, serie
+        case id, league, name, opponents, serie, status
     }
     
     public init(
@@ -22,6 +23,7 @@ public struct MatchesDataResponse: Decodable {
         serie: Serie,
         leagueID: Int,
         name: String,
+        status: Status,
         opponents: [Opponents]
     ) {
         self.beginAt = beginAt
@@ -30,7 +32,14 @@ public struct MatchesDataResponse: Decodable {
         self.serie = serie
         self.leagueID = leagueID
         self.name = name
+        self.status = status
         self.opponents = opponents
+    }
+    
+    public enum Status: String, Decodable {
+        case canceled = "canceled"
+        case finished = "finished"
+        case running = "running"
     }
     
     public struct League: Decodable {
@@ -109,6 +118,7 @@ public extension MatchesDataResponse {
         serie: Serie = .fixture(),
         leagueID: Int = UUID().hashValue,
         name: String = "match name",
+        status: Status = .finished,
         opponents: [Opponents] = [.fixture(), .fixture()]
     ) -> Self {
         MatchesDataResponse(
@@ -118,6 +128,7 @@ public extension MatchesDataResponse {
             serie: serie,
             leagueID: leagueID,
             name: name,
+            status: status,
             opponents: opponents
         )
     }

@@ -16,8 +16,13 @@ public extension CSTVMatchesService {
             }
             .map { response in
                 response.map { data in
-        MatchesData(
-            beginAt: data.beginAt,
+        let newFormatter = ISO8601DateFormatter()
+        let date = newFormatter.date(from: data.beginAt ?? "")
+        var dateFormatStyle = Date.FormatStyle.dateTime
+        dateFormatStyle.timeZone = .current
+
+        return MatchesData(
+            beginAt: date ?? .now,
             id: String(data.id),
             league: .init(
                 id: String(data.league.id),
@@ -30,6 +35,7 @@ public extension CSTVMatchesService {
             ),
             leagueID: String(data.leagueID),
             name: data.name,
+            status: .init(rawValue: data.status.rawValue) ?? .finished,
             opponents: data.opponents.map {
                 MatchesData.Opponents(
                     opponent: .init(

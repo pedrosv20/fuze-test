@@ -11,14 +11,14 @@ public struct PlayersResponse: Decodable {
     public struct Player: Decodable {
         public let name: String
         public let imageURL: String?
-        public let firstName: String
-        public let lastName: String
+        public let firstName: String?
+        public let lastName: String?
 
         public init(
             name: String,
             imageURL: String?,
-            firstName: String,
-            lastName: String
+            firstName: String?,
+            lastName: String?
         ) {
             self.name = name
             self.imageURL = imageURL

@@ -44,9 +44,19 @@ extension CSTVEndpoint: Endpoint {
     public var params: [String: String]? {
         switch self {
         case let .matchesList(page, sort):
-            return ["page": page, "sort": sort]
+            return [
+                "page": page,
+                "sort": sort
+                ]
         case let .getPlayers(id):
             return ["filter[id]": id]
         }
     }
 }
+//
+//let date = Date()
+//
+//let iso8601DateFormatter = ISO8601DateFormatter()
+//iso8601DateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+//iso8601DateFormatter.timeZone = .current
+//let formattedDate = iso8601DateFormatter.string(from: date)

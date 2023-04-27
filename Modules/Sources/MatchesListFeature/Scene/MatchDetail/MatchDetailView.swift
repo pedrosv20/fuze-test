@@ -15,13 +15,12 @@ public struct MatchDetailView: View {
                 Color(hex: "161621")
                     .ignoresSafeArea()
                 if
-                    let matchData = viewStore.matchData,
                     let playersTeam1 = viewStore.playersTeam1,
                     let playersTeam2 = viewStore.playersTeam2 {
                     VStack {
-                        matchView(matchData, playersTeam1, playersTeam2)
+                        matchView(viewStore.matchData, playersTeam1, playersTeam2)
                     }
-                    .navigationTitle(matchData.league.name)
+                    .navigationTitle(viewStore.matchData.league.name)
                     .toolbarColorScheme(.dark, for: .navigationBar)
                     .toolbarBackground(Visibility.visible, for: .navigationBar)
                     .navigationBarTitleDisplayMode(.inline)
@@ -40,9 +39,8 @@ public struct MatchDetailView: View {
     public func matchView(_ match: MatchesData, _ playersTeam1: [Players], _ playersTeam2: [Players]) -> some View {
             VStack {
                 HStack {
-                    if let opponents = match.opponents[safe: 0],
-                       let opponent1 = opponents.opponent {
-                        teamView(opponent1)
+                    if let opponents = match.opponents[safe: 0] {
+                        teamView(opponents.opponent)
                     }
                     
                     
@@ -50,15 +48,15 @@ public struct MatchDetailView: View {
                         .foregroundColor(.white)
                         .font(.system(size: 12))
                     
-                    if let opponents = match.opponents[safe: 1],
-                       let opponent2 = opponents.opponent {
-                        teamView(opponent2)
+                    if let opponents = match.opponents[safe: 1] {
+                        teamView(opponents.opponent)
                     }
                 }
                 .padding(.top, 16)
-
-                Text("Hoje, 21:00")
-                    .font(.system(size: 12))
+                
+                
+                Text("Hoje \(match.beginAt.formatted(date: .omitted, time: .shortened))")
+                    .font(Font.caption.weight(.bold))
                     .foregroundColor(.white)// TODO: -  get hour
                 
                 // PlayersView
@@ -92,7 +90,7 @@ public struct MatchDetailView: View {
                 }
             Text(opponent.name)
                 .foregroundColor(.white)
-                .font(.system(size: 10))
+                .font(Font.headline.weight(.bold))
         }
         .padding(.vertical)
     }
@@ -108,11 +106,13 @@ public struct MatchDetailView: View {
                             Spacer()
                             VStack(alignment: .trailing) {
                                 Text(player.name)
-                                    .font(.system(size: 14))
                                     .foregroundColor(.white)
-                                Text("\(player.firstName) \(player.lastName)")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 12))
+                                    .font(Font.headline.weight(.bold))
+                                if let firstName = player.firstName, let lastName = player.lastName {
+                                    Text("\(firstName) \(lastName)")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 12))
+                                }
                             }
                             .frame(alignment: .trailing)
                             

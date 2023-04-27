@@ -77,7 +77,7 @@ public struct MatchesList: ReducerProtocol {
             case .requestData:
                 state.currentPage += 1
                 return matchesService
-                    .getMatchesList("\(state.currentPage)", "")
+                    .getMatchesList("\(state.currentPage)", "begin_at")
                     .receive(on: mainQueue)
                     .catchToEffect()
                     .map(Action.handleRequestedData)

@@ -33,14 +33,15 @@ public struct MatchDetail: ReducerProtocol {
     public var body: some ReducerProtocol<State, Action> {
         Reduce { state, action in
             switch action {
-            case .onAppear:
+            case .onAppear:                
                 return .merge(
                     .init(value: .requestDataTeam1),
                     .init(value: .requestDataTeam2)
                 )
             case .requestDataTeam1:
+                guard let opponents = state.matchData.opponents[safe: 0] else { return .none }
                 return matchesService
-                    .getPlayers(state.matchData.opponents[0].opponent.id)
+                    .getPlayers(opponents.opponent.id)
                     .receive(on: mainQueue)
                     .catchToEffect()
                     .map(Action.handleRequestedDataTeam1)
@@ -53,8 +54,9 @@ public struct MatchDetail: ReducerProtocol {
                 return .none
 
             case .requestDataTeam2:
+                guard let opponents = state.matchData.opponents[safe: 1] else { return .none }
                 return matchesService
-                    .getPlayers(state.matchData.opponents[1].opponent.id)
+                    .getPlayers(opponents.opponent.id)
                     .receive(on: mainQueue)
                     .catchToEffect()
                     .map(Action.handleRequestedDataTeam2)

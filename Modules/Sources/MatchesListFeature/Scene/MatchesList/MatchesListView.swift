@@ -26,11 +26,16 @@ public struct MatchesListView: View {
                     } else {
                         List {
                             ForEach(viewStore.matchesData, id: \.id) { match in
-                                matchView(match)
-                                    .listRowBackground(Color(hex: "161621"))
-                                    .onTapGesture {
-                                        viewStore.send(.matchselected(match.id))
-                                    }
+                                if let _ = match.opponents[safe: 0],
+                                   let _ = match.opponents[safe: 1]
+                                {
+                                    matchView(match)
+                                        .listRowBackground(Color(hex: "161621"))
+                                        .onTapGesture {
+                                            viewStore.send(.matchselected(match.id))
+                                        }
+                                }
+                                
                             }
                             
                             if viewStore.finishDownloading == false {
@@ -91,18 +96,16 @@ public struct MatchesListView: View {
             VStack {
                 HStack(alignment: .center, spacing: .zero) {
                     Spacer()
-                    if let opponents = match.opponents[safe: 0],
-                       let opponent1 = opponents.opponent {
-                        teamView(opponent1)
+                    if let opponents = match.opponents[safe: 0] {
+                        teamView(opponents.opponent)
                     }
                     
                     Text("VS")
                         .foregroundColor(.white)
                         .font(.system(size: 12))
                     
-                    if let opponents = match.opponents[safe: 1],
-                       let opponent1 = opponents.opponent {
-                        teamView(opponent1)
+                    if let opponents = match.opponents[safe: 1] {
+                        teamView(opponents.opponent)
                     }
                     Spacer()
                 }
@@ -170,7 +173,7 @@ public struct MatchesListView: View {
                 Spacer()
                 Text(opponent.name)
                     .foregroundColor(.white)
-                    .font(.system(size: 10))
+                    .font(Font.headline.weight(.bold))
                     .lineLimit(1)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)

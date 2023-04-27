@@ -4,13 +4,10 @@
 <dict>
 	<key>UILaunchScreen</key>
 	<dict>
-		<key>UILaunchScreen</key>
-		<dict>
-			<key>Background color</key>
-			<string>LaunchScreenBackgroundColor</string>
-			<key>Image Name</key>
-			<string>FuzeLogo</string>
-		</dict>
+		<key>UIColorName</key>
+		<string>LaunchScreenBackgroundColor</string>
+		<key>UIImageName</key>
+		<string>FuzeLogo</string>
 	</dict>
 </dict>
 </plist>

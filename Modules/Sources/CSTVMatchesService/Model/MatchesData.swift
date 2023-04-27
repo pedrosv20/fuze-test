@@ -1,21 +1,23 @@
 import Foundation
 
 public struct MatchesData: Equatable {
-    public let beginAt: String?
+    public let beginAt: Date
     public let id: String
     public let league: League
     public let serie: Serie
     public let leagueID: String
     public let name: String
+    public let status: Status
     public let opponents: [Opponents]
 
     public init(
-        beginAt: String?,
+        beginAt: Date,
         id: String,
         league: League,
         serie: Serie,
         leagueID: String,
         name: String,
+        status: Status,
         opponents: [Opponents]
     ) {
         self.beginAt = beginAt
@@ -24,6 +26,7 @@ public struct MatchesData: Equatable {
         self.serie = serie
         self.leagueID = leagueID
         self.name = name
+        self.status = status
         self.opponents = opponents
     }
     
@@ -44,6 +47,12 @@ public struct MatchesData: Equatable {
             self.name = name
             self.slug = slug
         }
+    }
+    
+    public enum Status: String, Equatable {
+        case canceled = "canceled"
+        case finished = "finished"
+        case running = "running"
     }
     
     public struct Serie: Equatable {
@@ -83,12 +92,13 @@ public struct MatchesData: Equatable {
 
 public extension MatchesData {
     static func fixture(
-        beginAt: String? = "25/11/2000 - 16:00:00",
+        beginAt: Date = .now,
         id: String = UUID().uuidString,
         league: League = .fixture(),
         serie: Serie = .fixture(),
         leagueID: String = UUID().uuidString,
         name: String = "match name",
+        status: Status = .finished,
         opponents: [Opponents] = [.fixture(), .fixture()]
     ) -> Self {
         MatchesData(
@@ -98,6 +108,7 @@ public extension MatchesData {
             serie: serie,
             leagueID: leagueID,
             name: name,
+            status: status,
             opponents: opponents
         )
     }
