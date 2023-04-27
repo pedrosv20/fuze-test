@@ -36,7 +36,7 @@ public extension CSTVMatchesService {
                         ),
                         leagueID: String(data.leagueID),
                         name: data.name,
-                        status: .init(rawValue: data.status.rawValue) ?? .finished,
+                        status: .init(rawValue: data.status.rawValue) ?? .running,
                         opponents: data.opponents.map {
                             MatchesData.Opponents(
                                 opponent: .init(

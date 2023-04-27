@@ -50,8 +50,7 @@ public struct MatchesData: Equatable {
     }
     
     public enum Status: String, Equatable {
-        case canceled = "canceled"
-        case finished = "finished"
+        case notStarted = "not_started"
         case running = "running"
     }
     
@@ -98,7 +97,7 @@ public extension MatchesData {
         serie: Serie = .fixture(),
         leagueID: String = UUID().uuidString,
         name: String = "match name",
-        status: Status = .finished,
+        status: Status = .running,
         opponents: [Opponents] = [.fixture(), .fixture()]
     ) -> Self {
         MatchesData(

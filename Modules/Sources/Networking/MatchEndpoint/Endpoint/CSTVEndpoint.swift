@@ -46,7 +46,9 @@ extension CSTVEndpoint: Endpoint {
         case let .matchesList(page, sort):
             return [
                 "page": page,
-                "sort": sort
+                "sort": sort,
+                "filter[status]": "not_started, running"//,
+//                "filter[running]": "true"
                 ]
         case let .getPlayers(id):
             return ["filter[id]": id]

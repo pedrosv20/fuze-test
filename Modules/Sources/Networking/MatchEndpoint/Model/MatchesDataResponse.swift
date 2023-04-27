@@ -37,9 +37,8 @@ public struct MatchesDataResponse: Decodable {
     }
     
     public enum Status: String, Decodable {
-        case canceled = "canceled"
-        case finished = "finished"
         case running = "running"
+        case notStarted = "not_started"
     }
     
     public struct League: Decodable {
@@ -118,7 +117,7 @@ public extension MatchesDataResponse {
         serie: Serie = .fixture(),
         leagueID: Int = UUID().hashValue,
         name: String = "match name",
-        status: Status = .finished,
+        status: Status = .running,
         opponents: [Opponents] = [.fixture(), .fixture()]
     ) -> Self {
         MatchesDataResponse(
