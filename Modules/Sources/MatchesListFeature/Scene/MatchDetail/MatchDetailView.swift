@@ -57,7 +57,7 @@ public struct MatchDetailView: View {
                 
                 Text("Hoje \(match.beginAt.formatted(date: .omitted, time: .shortened))")
                     .font(Font.caption.weight(.bold))
-                    .foregroundColor(.white)// TODO: -  get hour
+                    .foregroundColor(.white)
                 
                 // PlayersView
                 HStack {
