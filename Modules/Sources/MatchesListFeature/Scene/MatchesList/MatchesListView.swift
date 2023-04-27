@@ -21,6 +21,7 @@ public struct MatchesListView: View {
                             }
                     }
                 }
+                .navigationTitle(viewStore.matchesData.isEmpty ? "" : "Partidas")
                 .navigationDestination(
                     isPresented: viewStore.binding(
                         get: \.goToDetail,
@@ -39,7 +40,6 @@ public struct MatchesListView: View {
                         }
                     }
                 )
-                .edgesIgnoringSafeArea(.all)
                 .onAppear { viewStore.send(.onAppear) }
             }
         }

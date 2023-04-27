@@ -55,6 +55,9 @@ public struct MatchesList: ReducerProtocol {
                 return .init(value: .shouldShowDetail(true))
 
             case let .shouldShowDetail(bool):
+                if bool == false {
+                    state.matchDetailSelected = nil
+                }
                 state.goToDetail = bool
                 return .none
 

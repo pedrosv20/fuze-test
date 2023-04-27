@@ -17,12 +17,13 @@ public extension HTTPClient {
         urlComponents.scheme = endpoint.scheme
         urlComponents.host = endpoint.host
         urlComponents.path = endpoint.path
-        urlComponents.queryItems = [
-            .init(name: "sort", value: endpoint.sort),
-            .init(name: "page", value: endpoint.page),
-            .init(name: "per_page", value: "10"),
-            
-        ]
+        urlComponents.queryItems = [.init(name: "per_page", value: "10")]
+        
+        endpoint.params.map { dict in
+            for (key, value) in dict {
+                urlComponents.queryItems?.append(.init(name: key, value: value))
+            }
+        }
         
         guard let url = urlComponents.url else {
             return Fail(error: RequestError.invalidURL).eraseToAnyPublisher()

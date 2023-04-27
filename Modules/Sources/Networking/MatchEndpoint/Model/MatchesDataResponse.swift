@@ -84,63 +84,63 @@ public struct MatchesDataResponse: Decodable {
         }
     }
 }
-//
-//public extension MatchesData {
-//    static func fixture(
-//        beginAt: String? = "25/11/2000 - 16:00:00",
-//        id: String = UUID().uuidString,
-//        league: League = .fixture(),
-//        leagueID: String = UUID().uuidString,
-//        name: String = "match name",
-//        opponents: [Opponents] = [.fixture(), .fixture()]
-//    ) -> Self {
-//        MatchesData(
-//            beginAt: beginAt,
-//            id: id,
-//            league: league,
-//            leagueID: leagueID,
-//            name: name,
-//            opponents: opponents
-//        )
-//    }
-//}
-//
-//public extension MatchesData.League {
-//    static func fixture(
-//        id: String = UUID().uuidString,
-//        imageURL: String? = nil,
-//        name: String = "league name",
-//        slug: String = "league slug"
-//    ) -> Self {
-//        MatchesData.League(
-//            id: id,
-//            imageURL: imageURL,
-//            name: name,
-//            slug: slug
-//        )
-//    }
-//}
-//
-//public extension MatchesData.Opponents {
-//    static func fixture(
-//        opponent: MatchesData.Opponent = .fixture()
-//    ) -> Self {
-//        MatchesData.Opponents(opponent: .fixture())
-//    }
-//}
-//
-//public extension MatchesData.Opponent {
-//    static func fixture(
-//        id: String = UUID().uuidString,
-//        imageURL: String? = nil,
-//        name: String = "opponent name",
-//        slug: String = "opponent slug"
-//    ) -> Self {
-//        MatchesData.Opponent(
-//            id: id,
-//            imageURL: imageURL,
-//            name: name,
-//            slug: slug
-//        )
-//    }
-//}
+
+public extension MatchesDataResponse {
+    static func fixture(
+        beginAt: String? = "25/11/2000 - 16:00:00",
+        id: Int = UUID().hashValue,
+        league: League = .fixture(),
+        leagueID: Int = UUID().hashValue,
+        name: String = "match name",
+        opponents: [Opponents] = [.fixture(), .fixture()]
+    ) -> Self {
+        MatchesDataResponse(
+            beginAt: beginAt,
+            id: id,
+            league: league,
+            leagueID: leagueID,
+            name: name,
+            opponents: opponents
+        )
+    }
+}
+
+public extension MatchesDataResponse.League {
+    static func fixture(
+        id: Int = UUID().hashValue,
+        imageURL: String? = nil,
+        name: String = "league name",
+        slug: String = "league slug"
+    ) -> Self {
+        MatchesDataResponse.League(
+            id: id,
+            imageURL: imageURL,
+            name: name,
+            slug: slug
+        )
+    }
+}
+
+public extension MatchesDataResponse.Opponents {
+    static func fixture(
+        opponent: MatchesDataResponse.Opponent = .fixture()
+    ) -> Self {
+        MatchesDataResponse.Opponents(opponent: .fixture())
+    }
+}
+
+public extension MatchesDataResponse.Opponent {
+    static func fixture(
+        id: Int = UUID().hashValue,
+        imageURL: String? = nil,
+        name: String = "opponent name",
+        slug: String = "opponent slug"
+    ) -> Self {
+        MatchesDataResponse.Opponent(
+            id: id,
+            imageURL: imageURL,
+            name: name,
+            slug: slug
+        )
+    }
+}
