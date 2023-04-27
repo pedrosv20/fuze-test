@@ -8,6 +8,8 @@
 		<string>LaunchScreenBackgroundColor</string>
 		<key>UIImageName</key>
 		<string>FuzeLogo</string>
+		<key>UIImageRespectsSafeAreaInsets</key>
+		<true/>
 	</dict>
 </dict>
 </plist>

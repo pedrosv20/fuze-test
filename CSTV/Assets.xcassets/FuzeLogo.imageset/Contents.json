@@ -1,8 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "fuze-removebg-preview 1.pdf",
-      "idiom" : "universal"
+      "filename" : "fuze-removebg-preview 1@3x.pdf",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "fuze-removebg-preview 1@3x 1.pdf",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "fuze-removebg-preview 1@3x 2.pdf",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
