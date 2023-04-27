@@ -3,15 +3,10 @@ import Dependencies
 import Networking
 
 public struct CSTVMatchesService {
-    public var getMatchesList: () -> AnyPublisher<[MatchesData], CommonErrors>
-    public var getMatchDetail: (_ matchID: MatchID) -> AnyPublisher<MatchesData, CommonErrors>
+    public var getMatchesList: (_ page: String, _ sort: String) -> AnyPublisher<[MatchesData], CommonErrors>
     
-    public init(
-        getMatchesList: @escaping () -> AnyPublisher<[MatchesData], CommonErrors>,
-        getMatchDetail: @escaping (_ matchID: MatchID) -> AnyPublisher<MatchesData, CommonErrors>
-    ) {
+    public init(getMatchesList: @escaping (_ page: String, _ sort: String) -> AnyPublisher<[MatchesData], CommonErrors>) {
         self.getMatchesList = getMatchesList
-        self.getMatchDetail = getMatchDetail
     }
 }
 
@@ -27,11 +22,8 @@ extension DependencyValues {
 }
 
 extension CSTVMatchesService {
-    public static var mock: Self = .init(getMatchesList: {
+    public static var mock: Self = .init { _, _ in
         Fail(error: .text("failed mock"))
             .eraseToAnyPublisher()
-    }, getMatchDetail: { _ in
-        Fail(error: .text("failed mock"))
-            .eraseToAnyPublisher()
-    })
+    }
 }

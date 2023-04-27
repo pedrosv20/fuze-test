@@ -46,7 +46,9 @@ public struct MatchesData: Equatable {
     public struct Opponents: Equatable {
         public let opponent: Opponent
         
-        public init(opponent: Opponent) {
+        public init(
+            opponent: Opponent
+        ) {
             self.opponent = opponent
         }
     }

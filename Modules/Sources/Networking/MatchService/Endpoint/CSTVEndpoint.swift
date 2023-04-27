@@ -1,9 +1,9 @@
 import Foundation
 
 public enum CSTVEndpoint {
-    case matchesList
-    case matchDetail(String)
-    case playerStats(String)
+    case matchesList(page: String, sort: String)
+    // tinha criado um matchDetail para pegar o ID da partida especifica e puxar as infos porém não tenho o acesso. This endpoint is only available to customers with a historical or real-time data plan
+    // utilizarei a mesma resposta do matchesLIst e filtrarei pelo ID que preciso que foi clicado
 }
 
 extension CSTVEndpoint: Endpoint {
@@ -11,23 +11,19 @@ extension CSTVEndpoint: Endpoint {
         switch self {
         case .matchesList:
             return "/csgo/matches/running"
-        case let .matchDetail(id):
-            return "/csgo/matches/\(id)"
-        case let .playerStats(id):
-            return "/csgo/players/\(id)/stats"
         }
     }
 
     public var method: HTTPMethod {
         switch self {
-        case .matchesList, .matchDetail, .playerStats:
+        case .matchesList:
             return .get
         }
     }
 
     public var header: [String: String]? {
         switch self {
-        case .matchesList, .matchDetail, .playerStats:
+        case .matchesList:
             return [
                 "Authorization": "Bearer 41vFiGMXjPUhbd_RsTSGlo3mMgUrW1DEpiNkzexResSr5cV8Rbg",
                 "accept": "application/json"
@@ -37,8 +33,22 @@ extension CSTVEndpoint: Endpoint {
     
     public var body: [String: String]? {
         switch self {
-        case .matchesList, .matchDetail, .playerStats:
+        case .matchesList:
             return nil
+        }
+    }
+    
+    public var page: String {
+        switch self {
+        case let .matchesList(page, _):
+            return page
+        }
+    }
+    
+    public var sort: String {
+        switch self {
+        case let .matchesList(_, sort):
+            return sort
         }
     }
 }

@@ -4,10 +4,10 @@ import Networking
 import CSTVMatchesService
 
 public extension CSTVMatchesService {
-    static let live: Self = .init {
+    static let live: Self = .init { page, sort in
         // request
         return HTTPClient.shared.request(
-            from: CSTVEndpoint.matchesList,
+            from: CSTVEndpoint.matchesList(page: page, sort: sort),
             responseModel: [MatchesDataResponse].self
         )
         .mapError { error in
@@ -27,7 +27,7 @@ public extension CSTVMatchesService {
                     leagueID: String(data.leagueID),
                     name: data.name,
                     opponents: data.opponents.map {
-                        .init(
+                        MatchesData.Opponents(
                             opponent: .init(
                                 id: String($0.opponent.id),
                                 imageURL: $0.opponent.imageURL,
@@ -38,19 +38,6 @@ public extension CSTVMatchesService {
                     }
                 )
             }
-        }
-        .eraseToAnyPublisher()
-    } getMatchDetail: { matchID in
-        // request
-        return HTTPClient.shared.request(
-            from: CSTVEndpoint.matchesList,
-            responseModel: MatchesDataResponse.self
-        )
-        .mapError { error in
-            return CommonErrors.decodingError
-        }
-        .map { _ in
-            .fixture()
         }
         .eraseToAnyPublisher()
     }

@@ -27,13 +27,16 @@ public struct MatchesListView: View {
                         send: { MatchesList.Action.shouldShowDetail($0) }
                     ),
                     destination: {
-                        MatchDetailView(
-                            store: .init(
-                                initialState: .init(
-                                    selectedMatch: viewStore.matchDetailSelected ?? ""),
-                                reducer: MatchDetail()
+                        if let matchDetail = viewStore.matchDetailSelected {
+                            MatchDetailView(
+                                store: .init(
+                                    initialState: .init(
+                                        matchData: matchDetail
+                                    ),
+                                    reducer: MatchDetail()
+                                )
                             )
-                        ) 
+                        }
                     }
                 )
                 .edgesIgnoringSafeArea(.all)

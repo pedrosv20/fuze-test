@@ -6,9 +6,11 @@ public struct MatchesList: ReducerProtocol {
     public struct State: Equatable {
         var matchesData: [MatchesData]
         var goToDetail = false
-        var matchDetailSelected: String? = nil
+        var matchDetailSelected: MatchesData? = nil
+        var currentPage: Int
 
-        public init(matchesData: [MatchesData]) {
+        public init(currentPage: Int = 0, matchesData: [MatchesData]) {
+            self.currentPage = currentPage
             self.matchesData = matchesData
         }
     }
@@ -45,7 +47,10 @@ public struct MatchesList: ReducerProtocol {
                 return .none
             
             case let .matchselected(id):
-                state.matchDetailSelected = id
+                guard let matchDetail = state.matchesData.filter({ $0.id == id }).first else {
+                    return .none
+                }
+                state.matchDetailSelected = matchDetail
                 
                 return .init(value: .shouldShowDetail(true))
 
@@ -54,8 +59,9 @@ public struct MatchesList: ReducerProtocol {
                 return .none
 
             case .requestData:
+//                state.currentPage += 1
                 return matchesService
-                    .getMatchesList()
+                    .getMatchesList("1", "")
                     .receive(on: mainQueue)
                     .catchToEffect()
                     .map(Action.handleRequestedData)

@@ -18,8 +18,8 @@ public extension HTTPClient {
         urlComponents.host = endpoint.host
         urlComponents.path = endpoint.path
         urlComponents.queryItems = [
-            .init(name: "sort", value: ""),
-            .init(name: "page", value: "1"),
+            .init(name: "sort", value: endpoint.sort),
+            .init(name: "page", value: endpoint.page),
             .init(name: "per_page", value: "10"),
             
         ]

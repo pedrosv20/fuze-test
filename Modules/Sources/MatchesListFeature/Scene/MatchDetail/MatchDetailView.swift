@@ -11,8 +11,8 @@ public struct MatchDetailView: View {
 
     public var body: some View {
         WithViewStore(store) { viewStore in
-            if let matchesData = viewStore.matchesData {
-                matchView(matchesData)
+            if let matchData = viewStore.matchData {
+                matchView(matchData)
             } else {
                 ProgressView()
                     .progressViewStyle(.circular)
@@ -76,8 +76,8 @@ public struct MatchDetailView: View {
     }
 }
 
-struct MatchDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        MatchDetailView.init(store: .init(initialState: .init(selectedMatch: "", matchesData: .fixture()), reducer: MatchDetail()))
-    }
-}
+//struct MatchDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MatchDetailView.init(store: .init(initialState: .init(selectedMatch: "", matchData: .fixture()), reducer: MatchDetail()))
+//    }
+//}
