@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07DECCDA29F6EF9B0023708B /* CSGO_LiveMatchesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DECCD929F6EF9B0023708B /* CSGO_LiveMatchesApp.swift */; };
+		0711C3E529F94FCB0099BD79 /* CSTVMatchesServiceLive in Frameworks */ = {isa = PBXBuildFile; productRef = 0711C3E429F94FCB0099BD79 /* CSTVMatchesServiceLive */; };
+		074AB33929F951B4008288B3 /* MatchesListFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 074AB33829F951B4008288B3 /* MatchesListFeature */; };
+		074AB33B29F951B8008288B3 /* CSTVMatchesService in Frameworks */ = {isa = PBXBuildFile; productRef = 074AB33A29F951B8008288B3 /* CSTVMatchesService */; };
+		07DECCDA29F6EF9B0023708B /* CSTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DECCD929F6EF9B0023708B /* CSTVApp.swift */; };
 		07DECCDC29F6EF9B0023708B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DECCDB29F6EF9B0023708B /* ContentView.swift */; };
 		07DECCDE29F6EF9E0023708B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07DECCDD29F6EF9E0023708B /* Assets.xcassets */; };
 		07DECCE129F6EF9E0023708B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07DECCE029F6EF9E0023708B /* Preview Assets.xcassets */; };
@@ -22,24 +25,18 @@
 			remoteGlobalIDString = 07DECCD529F6EF9B0023708B;
 			remoteInfo = "CSGO-LiveMatches";
 		};
-		07DECCF129F6EF9E0023708B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 07DECCCE29F6EF9B0023708B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 07DECCD529F6EF9B0023708B;
-			remoteInfo = "CSGO-LiveMatches";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07DECCD629F6EF9B0023708B /* CSGO-LiveMatches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CSGO-LiveMatches.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		07DECCD929F6EF9B0023708B /* CSGO_LiveMatchesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSGO_LiveMatchesApp.swift; sourceTree = "<group>"; };
+		0712CFCC29FA5E420081D05C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0747A84129F94F730098D84B /* CSTVMatchesServiceLive */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CSTVMatchesServiceLive; path = Modules/Sources/CSTVMatchesServiceLive; sourceTree = "<group>"; };
+		07DECCD629F6EF9B0023708B /* CSTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		07DECCD929F6EF9B0023708B /* CSTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVApp.swift; sourceTree = "<group>"; };
 		07DECCDB29F6EF9B0023708B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		07DECCDD29F6EF9E0023708B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07DECCE029F6EF9E0023708B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		07DECCE629F6EF9E0023708B /* CSGO-LiveMatchesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CSGO-LiveMatchesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07DECCE629F6EF9E0023708B /* CSTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07DECCEA29F6EF9E0023708B /* CSGO_LiveMatchesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSGO_LiveMatchesTests.swift; sourceTree = "<group>"; };
-		07DECCF029F6EF9E0023708B /* CSGO-LiveMatchesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CSGO-LiveMatchesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +44,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0711C3E529F94FCB0099BD79 /* CSTVMatchesServiceLive in Frameworks */,
+				074AB33929F951B4008288B3 /* MatchesListFeature in Frameworks */,
+				074AB33B29F951B8008288B3 /* CSTVMatchesService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,44 +57,46 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07DECCED29F6EF9E0023708B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07B2BCBC29F7738B00B735B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0747A84129F94F730098D84B /* CSTVMatchesServiceLive */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		07DECCCD29F6EF9B0023708B = {
 			isa = PBXGroup;
 			children = (
-				07DECCD829F6EF9B0023708B /* CSGO-LiveMatches */,
-				07DECCE929F6EF9E0023708B /* CSGO-LiveMatchesTests */,
+				07DECCD829F6EF9B0023708B /* CSTV */,
+				07DECCE929F6EF9E0023708B /* CSTVTests */,
 				07DECCD729F6EF9B0023708B /* Products */,
+				07B2BCBC29F7738B00B735B2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		07DECCD729F6EF9B0023708B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				07DECCD629F6EF9B0023708B /* CSGO-LiveMatches.app */,
-				07DECCE629F6EF9E0023708B /* CSGO-LiveMatchesTests.xctest */,
-				07DECCF029F6EF9E0023708B /* CSGO-LiveMatchesUITests.xctest */,
+				07DECCD629F6EF9B0023708B /* CSTV.app */,
+				07DECCE629F6EF9E0023708B /* CSTVTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		07DECCD829F6EF9B0023708B /* CSGO-LiveMatches */ = {
+		07DECCD829F6EF9B0023708B /* CSTV */ = {
 			isa = PBXGroup;
 			children = (
-				07DECCD929F6EF9B0023708B /* CSGO_LiveMatchesApp.swift */,
+				0712CFCC29FA5E420081D05C /* Info.plist */,
+				07DECCD929F6EF9B0023708B /* CSTVApp.swift */,
 				07DECCDB29F6EF9B0023708B /* ContentView.swift */,
 				07DECCDD29F6EF9E0023708B /* Assets.xcassets */,
 				07DECCDF29F6EF9E0023708B /* Preview Content */,
 			);
-			path = "CSGO-LiveMatches";
+			path = CSTV;
 			sourceTree = "<group>";
 		};
 		07DECCDF29F6EF9E0023708B /* Preview Content */ = {
@@ -105,20 +107,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		07DECCE929F6EF9E0023708B /* CSGO-LiveMatchesTests */ = {
+		07DECCE929F6EF9E0023708B /* CSTVTests */ = {
 			isa = PBXGroup;
 			children = (
 				07DECCEA29F6EF9E0023708B /* CSGO_LiveMatchesTests.swift */,
 			);
-			path = "CSGO-LiveMatchesTests";
+			path = CSTVTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		07DECCD529F6EF9B0023708B /* CSGO-LiveMatches */ = {
+		07DECCD529F6EF9B0023708B /* CSTV */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 07DECCFA29F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSGO-LiveMatches" */;
+			buildConfigurationList = 07DECCFA29F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSTV" */;
 			buildPhases = (
 				07DECCD229F6EF9B0023708B /* Sources */,
 				07DECCD329F6EF9B0023708B /* Frameworks */,
@@ -128,14 +130,19 @@
 			);
 			dependencies = (
 			);
-			name = "CSGO-LiveMatches";
+			name = CSTV;
+			packageProductDependencies = (
+				0711C3E429F94FCB0099BD79 /* CSTVMatchesServiceLive */,
+				074AB33829F951B4008288B3 /* MatchesListFeature */,
+				074AB33A29F951B8008288B3 /* CSTVMatchesService */,
+			);
 			productName = "CSGO-LiveMatches";
-			productReference = 07DECCD629F6EF9B0023708B /* CSGO-LiveMatches.app */;
+			productReference = 07DECCD629F6EF9B0023708B /* CSTV.app */;
 			productType = "com.apple.product-type.application";
 		};
-		07DECCE529F6EF9E0023708B /* CSGO-LiveMatchesTests */ = {
+		07DECCE529F6EF9E0023708B /* CSTVTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 07DECCFD29F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSGO-LiveMatchesTests" */;
+			buildConfigurationList = 07DECCFD29F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSTVTests" */;
 			buildPhases = (
 				07DECCE229F6EF9E0023708B /* Sources */,
 				07DECCE329F6EF9E0023708B /* Frameworks */,
@@ -146,28 +153,10 @@
 			dependencies = (
 				07DECCE829F6EF9E0023708B /* PBXTargetDependency */,
 			);
-			name = "CSGO-LiveMatchesTests";
+			name = CSTVTests;
 			productName = "CSGO-LiveMatchesTests";
-			productReference = 07DECCE629F6EF9E0023708B /* CSGO-LiveMatchesTests.xctest */;
+			productReference = 07DECCE629F6EF9E0023708B /* CSTVTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		07DECCEF29F6EF9E0023708B /* CSGO-LiveMatchesUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 07DECD0029F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSGO-LiveMatchesUITests" */;
-			buildPhases = (
-				07DECCEC29F6EF9E0023708B /* Sources */,
-				07DECCED29F6EF9E0023708B /* Frameworks */,
-				07DECCEE29F6EF9E0023708B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				07DECCF229F6EF9E0023708B /* PBXTargetDependency */,
-			);
-			name = "CSGO-LiveMatchesUITests";
-			productName = "CSGO-LiveMatchesUITests";
-			productReference = 07DECCF029F6EF9E0023708B /* CSGO-LiveMatchesUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -186,13 +175,9 @@
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 07DECCD529F6EF9B0023708B;
 					};
-					07DECCEF29F6EF9E0023708B = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 07DECCD529F6EF9B0023708B;
-					};
 				};
 			};
-			buildConfigurationList = 07DECCD129F6EF9B0023708B /* Build configuration list for PBXProject "CSGO-LiveMatches" */;
+			buildConfigurationList = 07DECCD129F6EF9B0023708B /* Build configuration list for PBXProject "CSTV" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -205,9 +190,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				07DECCD529F6EF9B0023708B /* CSGO-LiveMatches */,
-				07DECCE529F6EF9E0023708B /* CSGO-LiveMatchesTests */,
-				07DECCEF29F6EF9E0023708B /* CSGO-LiveMatchesUITests */,
+				07DECCD529F6EF9B0023708B /* CSTV */,
+				07DECCE529F6EF9E0023708B /* CSTVTests */,
 			);
 		};
 /* End PBXProject section */
@@ -229,13 +213,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07DECCEE29F6EF9E0023708B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -244,7 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07DECCDC29F6EF9B0023708B /* ContentView.swift in Sources */,
-				07DECCDA29F6EF9B0023708B /* CSGO_LiveMatchesApp.swift in Sources */,
+				07DECCDA29F6EF9B0023708B /* CSTVApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,25 +233,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07DECCEC29F6EF9E0023708B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		07DECCE829F6EF9E0023708B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 07DECCD529F6EF9B0023708B /* CSGO-LiveMatches */;
+			target = 07DECCD529F6EF9B0023708B /* CSTV */;
 			targetProxy = 07DECCE729F6EF9E0023708B /* PBXContainerItemProxy */;
-		};
-		07DECCF229F6EF9E0023708B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 07DECCD529F6EF9B0023708B /* CSGO-LiveMatches */;
-			targetProxy = 07DECCF129F6EF9E0023708B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -400,13 +365,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CSGO-LiveMatches/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CSTV/Preview Content\"";
 				DEVELOPMENT_TEAM = F9DP8D3V7J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CSTV/info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -414,7 +379,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.PedroVargas.CSGO-LiveMatches";
+				PRODUCT_BUNDLE_IDENTIFIER = com.PedroVargas.CSTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -429,13 +394,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CSGO-LiveMatches/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CSTV/Preview Content\"";
 				DEVELOPMENT_TEAM = F9DP8D3V7J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CSTV/info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -443,7 +408,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.PedroVargas.CSGO-LiveMatches";
+				PRODUCT_BUNDLE_IDENTIFIER = com.PedroVargas.CSTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -462,12 +427,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.PedroVargas.CSGO-LiveMatchesTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.PedroVargas.CSTVTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CSGO-LiveMatches.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CSGO-LiveMatches";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CSTV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CSTV";
 			};
 			name = Debug;
 		};
@@ -482,55 +447,19 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.PedroVargas.CSGO-LiveMatchesTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.PedroVargas.CSTVTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CSGO-LiveMatches.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CSGO-LiveMatches";
-			};
-			name = Release;
-		};
-		07DECD0129F6EF9E0023708B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F9DP8D3V7J;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.PedroVargas.CSGO-LiveMatchesUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "CSGO-LiveMatches";
-			};
-			name = Debug;
-		};
-		07DECD0229F6EF9E0023708B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F9DP8D3V7J;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.PedroVargas.CSGO-LiveMatchesUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "CSGO-LiveMatches";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CSTV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CSTV";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		07DECCD129F6EF9B0023708B /* Build configuration list for PBXProject "CSGO-LiveMatches" */ = {
+		07DECCD129F6EF9B0023708B /* Build configuration list for PBXProject "CSTV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07DECCF829F6EF9E0023708B /* Debug */,
@@ -539,7 +468,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07DECCFA29F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSGO-LiveMatches" */ = {
+		07DECCFA29F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSTV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07DECCFB29F6EF9E0023708B /* Debug */,
@@ -548,7 +477,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07DECCFD29F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSGO-LiveMatchesTests" */ = {
+		07DECCFD29F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSTVTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07DECCFE29F6EF9E0023708B /* Debug */,
@@ -557,16 +486,22 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07DECD0029F6EF9E0023708B /* Build configuration list for PBXNativeTarget "CSGO-LiveMatchesUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				07DECD0129F6EF9E0023708B /* Debug */,
-				07DECD0229F6EF9E0023708B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0711C3E429F94FCB0099BD79 /* CSTVMatchesServiceLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CSTVMatchesServiceLive;
+		};
+		074AB33829F951B4008288B3 /* MatchesListFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MatchesListFeature;
+		};
+		074AB33A29F951B8008288B3 /* CSTVMatchesService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CSTVMatchesService;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 07DECCCE29F6EF9B0023708B /* Project object */;
 }

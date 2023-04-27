@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import CSGO_LiveMatches
+@testable import CSTV
 
 final class CSGO_LiveMatchesTests: XCTestCase {
 
