@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Modules">
+      location = "group:CSTV.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/pedrovargas/Documents/Fuze/fuze-test/CSTV.xcodeproj">
+      location = "group:Modules">
    </FileRef>
 </Workspace>
