@@ -8,7 +8,7 @@ public struct MatchDetailView: View {
     public init(store: StoreOf<MatchDetail>) {
         self.store = store
     }
-
+    
     public var body: some View {
         WithViewStore(store) { viewStore in
             ZStack {
@@ -37,54 +37,54 @@ public struct MatchDetailView: View {
     }
     
     public func matchView(_ match: MatchesData, _ playersTeam1: [Players], _ playersTeam2: [Players]) -> some View {
-            VStack {
-                HStack {
-                    if let opponents = match.opponents[safe: 0] {
-                        teamView(opponents.opponent)
-                    }
-                    
-                    
-                    Text("VS")
-                        .foregroundColor(.white)
-                        .font(.system(size: 12))
-                    
-                    if let opponents = match.opponents[safe: 1] {
-                        teamView(opponents.opponent)
-                    }
+        VStack {
+            HStack {
+                if let opponents = match.opponents[safe: 0] {
+                    teamView(opponents.opponent)
                 }
-                .padding(.top, 16)
                 
-                if match.status == .running {
-                    VStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor( Color.red)
-                            .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.12)
-                            .overlay {
-                                Text("Live")
-                                    .font(Font.caption.weight(.bold))
-                                    .foregroundColor(.white)
-                            }
-                        
-                        Text("Hoje \(match.beginAt.formatted(date: .omitted, time: .shortened))")
-                            .font(Font.caption.weight(.bold))
-                            .foregroundColor(.white)
-                    }
+                
+                Text("VS")
+                    .foregroundColor(.white)
+                    .font(.system(size: 12))
+                
+                if let opponents = match.opponents[safe: 1] {
+                    teamView(opponents.opponent)
+                }
+            }
+            .padding(.top, 16)
+            
+            if match.status == .running {
+                VStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .foregroundColor( Color.red)
+                        .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.12)
+                        .overlay {
+                            Text("Live")
+                                .font(Font.caption.weight(.bold))
+                                .foregroundColor(.white)
+                        }
                     
-                } else {
-                    Text(match.beginAt.formatted(date: .abbreviated, time: .shortened))
+                    Text("Hoje \(match.beginAt.formatted(date: .omitted, time: .shortened))")
                         .font(Font.caption.weight(.bold))
                         .foregroundColor(.white)
                 }
                 
-                
-                // PlayersView
-                HStack {
-                    playersView(playersTeam1, alignment: .leading)
-                    playersView(playersTeam2, alignment: .trailing)
-                }
+            } else {
+                Text(match.beginAt.formatted(date: .abbreviated, time: .shortened))
+                    .font(Font.caption.weight(.bold))
+                    .foregroundColor(.white)
             }
+            
+            
+            // PlayersView
+            HStack {
+                playersView(playersTeam1, alignment: .leading)
+                playersView(playersTeam2, alignment: .trailing)
+            }
+        }
     }
-
+    
     func teamView(_ opponent: MatchesData.Opponent) -> some View {
         VStack(spacing: .zero) {
             Circle()
@@ -103,7 +103,7 @@ public struct MatchDetailView: View {
                         } else {
                             Circle().foregroundColor(.gray)
                         }
-                         
+                        
                     }
                 }
             Text(opponent.name)
@@ -112,49 +112,76 @@ public struct MatchDetailView: View {
         }
         .padding(.vertical)
     }
-
+    
     func playersView(_ players: [Players], alignment: HorizontalAlignment) -> some View {
         VStack(spacing: 16) {
-            ForEach(players, id: \.name) { player in
-                Rectangle()
-                    .roundedCorner(8, corners: alignment == .leading ? [.bottomRight, .topRight] : [.bottomLeft, .topLeft])
-                    .foregroundColor(Color(hex: "272639"))
-                    .overlay {
-                        HStack(spacing: 12) {
-                            Spacer()
-                            VStack(alignment: .trailing) {
-                                Text(player.name)
-                                    .foregroundColor(.white)
-                                    .font(Font.headline.weight(.bold))
-                                if let firstName = player.firstName, let lastName = player.lastName {
-                                    Text("\(firstName) \(lastName)")
+            ForEach(0..<5) { value in
+                if let player = players[safe: value] {
+                    Rectangle()
+                        .roundedCorner(8, corners: alignment == .leading ? [.bottomRight, .topRight] : [.bottomLeft, .topLeft])
+                        .foregroundColor(Color(hex: "272639"))
+                        .overlay {
+                            HStack(spacing: 12) {
+                                Spacer()
+                                VStack(alignment: .trailing) {
+                                    Text(player.name)
+                                        .foregroundColor(.white)
+                                        .font(Font.headline.weight(.bold))
+                                    if let firstName = player.firstName, let lastName = player.lastName {
+                                        Text("\(firstName) \(lastName)")
+                                            .foregroundColor(.white)
+                                            .font(.system(size: 12))
+                                    }
+                                }
+                                .frame(alignment: .trailing)
+                                
+                                AsyncImage(url: player.imageURL) { image in
+                                    image.resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 60, height: 60)
+                                } placeholder: {
+                                    if player.imageURL != nil {
+                                        ProgressView()
+                                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                    } else {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .frame(width: 60, height: 60)
+                                            .foregroundColor(.gray)
+                                    }
+                                    
+                                }
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .offset(x: -5, y: -7)
+                            }
+                            .environment(\.layoutDirection, alignment == .leading ? .leftToRight : .rightToLeft)
+                        }
+                } else {
+                    Rectangle()
+                        .roundedCorner(8, corners: alignment == .leading ? [.bottomRight, .topRight] : [.bottomLeft, .topLeft])
+                        .foregroundColor(Color(hex: "272639"))
+                        .overlay {
+                            HStack(spacing: 12) {
+                                Spacer()
+                                VStack(alignment: .trailing) {
+                                    Text("")
+                                        .foregroundColor(.white)
+                                        .font(Font.headline.weight(.bold))
+                                    Text("")
                                         .foregroundColor(.white)
                                         .font(.system(size: 12))
+                                    
                                 }
-                            }
-                            .frame(alignment: .trailing)
-                            
-                            AsyncImage(url: player.imageURL) { image in
-                                image.resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 60, height: 60)
-                            } placeholder: {
-                                if player.imageURL != nil {
-                                    ProgressView()
-                                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                                } else {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .frame(width: 60, height: 60)
-                                        .foregroundColor(.gray)
-                                }
+                                .frame(alignment: .trailing)
                                 
+                                RoundedRectangle(cornerRadius: 8)
+                                    .frame(width: 60, height: 60)
+                                    .foregroundColor(.gray)
+                                    .offset(x: -5, y: -7)
                             }
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .offset(x: -5, y: -7)
-                    }
-                    .environment(\.layoutDirection, alignment == .leading ? .leftToRight : .rightToLeft)
-                        
-                    }
+                            .environment(\.layoutDirection, alignment == .leading ? .leftToRight : .rightToLeft)
+                            
+                        }
+                }
             }
         }
         .padding(.vertical)
