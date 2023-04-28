@@ -11,11 +11,12 @@ public struct MatchesListView: View {
     
     public var body: some View {
         NavigationStack {
-            ZStack {
-                Color(hex: "161621")
-                    .ignoresSafeArea()
-                
-                WithViewStore(store) { viewStore in
+            WithViewStore(store) { viewStore in
+                ZStack {
+                    Color(hex: "161621")
+                        .ignoresSafeArea()
+                    
+                    
                     if viewStore.state.matchesData.isEmpty {
                         
                         ProgressView()
@@ -53,39 +54,41 @@ public struct MatchesListView: View {
                                 
                             }
                         }
-                        .refreshable {
-                            viewStore.send(.refresh)
-                        }
-                        .background(Color(hex: "161621"))
-                        .edgesIgnoringSafeArea([.bottom, .horizontal])
-                        .scrollContentBackground(.hidden)
-                        .toolbarBackground(.visible, for: .navigationBar)
-                        .toolbarBackground(
-                            Color(hex: "161621") ?? Color.black,
-                            for: .navigationBar
-                        )
-                        .navigationTitle(viewStore.matchesData.isEmpty ? "" : "Partidas")
-                        .toolbarColorScheme(.dark, for: .navigationBar)
-                        .navigationDestination(
-                            isPresented: viewStore.binding(
-                                get: \.goToDetail,
-                                send: { MatchesList.Action.shouldShowDetail($0) }
-                            ),
-                            destination: {
-                                if let matchDetail = viewStore.matchDetailSelected {
-                                    MatchDetailView(
-                                        store: .init(
-                                            initialState: .init(
-                                                matchData: matchDetail
-                                            ),
-                                            reducer: MatchDetail()
-                                        )
-                                    )
-                                }
-                            }
-                        )
                     }
+                    
+                        
                 }
+                .refreshable {
+                    viewStore.send(.refresh)
+                }
+                .background(Color(hex: "161621"))
+                .edgesIgnoringSafeArea([.bottom, .horizontal])
+                .scrollContentBackground(.hidden)
+                .toolbarBackground(.visible, for: .navigationBar)
+                .toolbarBackground(
+                    Color(hex: "161621") ?? Color.black,
+                    for: .navigationBar
+                )
+                .navigationTitle(viewStore.matchesData.isEmpty ? "" : "Partidas")
+                .toolbarColorScheme(.dark, for: .navigationBar)
+                .navigationDestination(
+                    isPresented: viewStore.binding(
+                        get: \.goToDetail,
+                        send: { MatchesList.Action.shouldShowDetail($0) }
+                    ),
+                    destination: {
+                        if let matchDetail = viewStore.matchDetailSelected {
+                            MatchDetailView(
+                                store: .init(
+                                    initialState: .init(
+                                        matchData: matchDetail
+                                    ),
+                                    reducer: MatchDetail()
+                                )
+                            )
+                        }
+                    }
+                )
             }
         }
     }
