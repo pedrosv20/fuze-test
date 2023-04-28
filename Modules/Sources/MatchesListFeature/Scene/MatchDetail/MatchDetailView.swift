@@ -1,5 +1,7 @@
 import ComposableArchitecture
 import CSTVMatchesService
+import DesignSystem
+import SharedExtensions
 import SwiftUI
 
 public struct MatchDetailView: View {
@@ -12,7 +14,7 @@ public struct MatchDetailView: View {
     public var body: some View {
         WithViewStore(store) { viewStore in
             ZStack {
-                Color(hex: "161621")
+                DS.Colors.mainBackground
                     .ignoresSafeArea()
                 if
                     let playersTeam1 = viewStore.playersTeam1,
@@ -52,11 +54,11 @@ public struct MatchDetailView: View {
                     teamView(opponents.opponent)
                 }
             }
-            .padding(.top, 16)
+            .padding(.top, DS.Spacing.m)
             
             if match.status == .running {
                 VStack {
-                    RoundedRectangle(cornerRadius: 8)
+                    RoundedRectangle(cornerRadius: DS.CornerRadius.xs)
                         .foregroundColor( Color.red)
                         .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.12)
                         .overlay {
@@ -89,12 +91,12 @@ public struct MatchDetailView: View {
         VStack(spacing: .zero) {
             Circle()
                 .foregroundColor(.clear)
-                .padding(26)
+                .padding(DS.Spacing.l)
                 .overlay {
                     AsyncImage(url: URL(string: opponent.imageURL ?? "")) { image in
                         image.resizable()
                             .aspectRatio(contentMode: .fit)
-                            .padding(26)
+                            .padding(DS.Spacing.l)
                     } placeholder: {
                         if let imageURL = opponent.imageURL,
                            let _ = URL(string: imageURL) {
@@ -114,18 +116,19 @@ public struct MatchDetailView: View {
     }
     
     func playersView(_ players: [Players], alignment: HorizontalAlignment) -> some View {
-        VStack(spacing: 16) {
+        VStack(spacing: DS.Spacing.m) {
             ForEach(0..<5) { value in
                 if let player = players[safe: value] {
                     Rectangle()
-                        .roundedCorner(8, corners: alignment == .leading ? [.bottomRight, .topRight] : [.bottomLeft, .topLeft])
-                        .foregroundColor(Color(hex: "272639"))
+                        .roundedCorner(DS.CornerRadius.xs, corners: alignment == .leading ? [.bottomRight, .topRight] : [.bottomLeft, .topLeft])
+                        .foregroundColor(DS.Colors.rowBackground)
                         .overlay {
-                            HStack(spacing: 12) {
+                            HStack(spacing: DS.Spacing.s) {
                                 Spacer()
                                 VStack(alignment: .trailing) {
                                     Text(player.name)
-                                        .minimumScaleFactor(0.5)
+                                        .minimumScaleFactor(0.4)
+                                        .lineLimit(1)
                                         .foregroundColor(.white)
                                         .font(Font.headline.weight(.bold))
                                     if let firstName = player.firstName, let lastName = player.lastName {
@@ -147,23 +150,23 @@ public struct MatchDetailView: View {
                                         ProgressView()
                                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                     } else {
-                                        RoundedRectangle(cornerRadius: 8)
+                                        RoundedRectangle(cornerRadius: DS.CornerRadius.xs)
                                             .frame(width: 60, height: 60)
                                             .foregroundColor(.gray)
                                     }
                                     
                                 }
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .clipShape(RoundedRectangle(cornerRadius: DS.CornerRadius.xs))
                                 .offset(x: -5, y: -7)
                             }
                             .environment(\.layoutDirection, alignment == .leading ? .leftToRight : .rightToLeft)
                         }
                 } else {
                     Rectangle()
-                        .roundedCorner(8, corners: alignment == .leading ? [.bottomRight, .topRight] : [.bottomLeft, .topLeft])
-                        .foregroundColor(Color(hex: "272639"))
+                        .roundedCorner(DS.CornerRadius.xs, corners: alignment == .leading ? [.bottomRight, .topRight] : [.bottomLeft, .topLeft])
+                        .foregroundColor(DS.Colors.rowBackground)
                         .overlay {
-                            HStack(spacing: 12) {
+                            HStack(spacing: DS.Spacing.s) {
                                 Spacer()
                                 VStack(alignment: .trailing) {
                                     Text("")
@@ -176,7 +179,7 @@ public struct MatchDetailView: View {
                                 }
                                 .frame(alignment: .trailing)
                                 
-                                RoundedRectangle(cornerRadius: 8)
+                                RoundedRectangle(cornerRadius: DS.CornerRadius.xs)
                                     .frame(width: 60, height: 60)
                                     .foregroundColor(.gray)
                                     .offset(x: -5, y: -7)
@@ -196,20 +199,3 @@ public struct MatchDetailView: View {
 //        MatchDetailView.init(store: .init(initialState: .init(selectedMatch: "", matchData: .fixture()), reducer: MatchDetail()))
 //    }
 //}
-
-// TODO: - Create CommonExtensions Module
-struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-    
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        return Path(path.cgPath)
-    }
-}
-
-extension View {
-    func roundedCorner(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners) )
-    }
-}

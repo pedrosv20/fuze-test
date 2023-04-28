@@ -12,6 +12,8 @@ let package = Package(
         .library(name: "CSTVMatchesServiceLive", targets: ["CSTVMatchesServiceLive"]),
         .library(name: "CSTVMatchesService", targets: ["CSTVMatchesService"]),
         .library(name: "MatchesListFeature", targets: ["MatchesListFeature"]),
+        .library(name: "DesignSystem", targets: ["DesignSystem"]),
+        .library(name: "SharedExtensions", targets: ["SharedExtensions"]),
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", branch: "main"),
@@ -28,6 +30,12 @@ let package = Package(
         
         // Networking
         .networking,
+        
+        // Design System
+        .designSystem,
+        
+        // Shared Extensions,
+        .sharedExtensions
     ]
 )
 
@@ -35,13 +43,15 @@ fileprivate extension Target {
     static var cstvMatchesServiceLive = Target.target(
         name: "CSTVMatchesServiceLive",
         dependencies: [
-            "CSTVMatchesService"
+            "CSTVMatchesService",
+            "SharedExtensions"
         ]
     )
     
     static var cstvMatchesService = Target.target(
         name: "CSTVMatchesService",
         dependencies: [
+            "DesignSystem",
             "Networking",
             .product(name: "Dependencies", package: "swift-dependencies")
             
@@ -57,7 +67,8 @@ fileprivate extension Target {
             .product(
                 name: "ComposableArchitecture",
                 package: "swift-composable-architecture"
-            )
+            ),
+            "SharedExtensions"
         ]
     )
     
@@ -70,6 +81,22 @@ fileprivate extension Target {
 fileprivate extension Target {
     static var networking = Target.target(
         name: "Networking",
+        dependencies: []
+    )
+}
+
+fileprivate extension Target {
+    static var designSystem = Target.target(
+        name: "DesignSystem",
+        dependencies: [
+            "SharedExtensions"
+        ]
+    )
+}
+
+fileprivate extension Target {
+    static var sharedExtensions = Target.target(
+        name: "SharedExtensions",
         dependencies: []
     )
 }

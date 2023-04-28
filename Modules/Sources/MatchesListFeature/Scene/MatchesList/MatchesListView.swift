@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import CSTVMatchesService
+import DesignSystem
 import SwiftUI
 
 public struct MatchesListView: View {
@@ -13,7 +14,7 @@ public struct MatchesListView: View {
         NavigationStack {
             WithViewStore(store) { viewStore in
                 ZStack {
-                    Color(hex: "161621")
+                    DS.Colors.mainBackground
                         .ignoresSafeArea()
                     
                     
@@ -22,7 +23,7 @@ public struct MatchesListView: View {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                             .onAppear { viewStore.send(.onAppear) }
-                            .background(Color(hex: "161621"))
+                            .background(DS.Colors.mainBackground)
                             .edgesIgnoringSafeArea(.all)
                     } else {
                         List {
@@ -31,7 +32,7 @@ public struct MatchesListView: View {
                                    let _ = match.opponents[safe: 1]
                                 {
                                     matchView(match)
-                                        .listRowBackground(Color(hex: "161621"))
+                                        .listRowBackground(DS.Colors.mainBackground)
                                         .onTapGesture {
                                             viewStore.send(.matchselected(match.id))
                                         }
@@ -47,11 +48,11 @@ public struct MatchesListView: View {
                                         .onAppear {
                                             viewStore.send(.requestData)
                                         }
-                                        .listRowBackground(Color(hex: "161621"))
+                                        .listRowBackground(DS.Colors.mainBackground)
                                     Spacer()
                                 }
-                                .listRowBackground(Color(hex: "161621"))
-                                .background(Color(hex: "161621"))
+                                .listRowBackground(DS.Colors.mainBackground)
+                                .background(DS.Colors.mainBackground)
                                 
                             }
                         }
@@ -62,12 +63,12 @@ public struct MatchesListView: View {
                 .refreshable {
                     viewStore.send(.refresh)
                 }
-                .background(Color(hex: "161621"))
+                .background(DS.Colors.mainBackground)
                 .edgesIgnoringSafeArea([.bottom, .horizontal])
                 .scrollContentBackground(.hidden)
                 .toolbarBackground(.visible, for: .navigationBar)
                 .toolbarBackground(
-                    Color(hex: "161621") ?? Color.black,
+                    DS.Colors.mainBackground ?? Color.black,
                     for: .navigationBar
                 )
                 .navigationTitle(viewStore.matchesData.isEmpty ? "" : "Partidas")
@@ -95,7 +96,7 @@ public struct MatchesListView: View {
     }
     
     public func matchView(_ match: MatchesData) -> some View {
-        RoundedRectangle(cornerRadius: 16)
+        RoundedRectangle(cornerRadius: DS.CornerRadius.m)
             .overlay {
                 VStack {
                     HStack(alignment: .center, spacing: .zero) {
@@ -113,7 +114,7 @@ public struct MatchesListView: View {
                         }
                         Spacer()
                     }
-                    .padding(.top, 16)
+                    .padding(.top, DS.Spacing.m)
                     
                     Spacer()
                     
@@ -145,7 +146,7 @@ public struct MatchesListView: View {
                         
                         Spacer()
                     }
-                    .padding([.bottom, .leading], 8)
+                    .padding([.bottom, .leading], DS.Spacing.xs)
                 }
             }
             .overlay(alignment: .topTrailing) {
@@ -163,9 +164,9 @@ public struct MatchesListView: View {
                         }
                 } else {
                     Rectangle()
-                        .foregroundColor(Color(hex: "FAFAFA")?.opacity(0.2))
+                        .foregroundColor(DS.Colors.timeRectangle?.opacity(0.2))
                         .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.06)
-                        .roundedCorner(8, corners: [.bottomLeft, .topRight] )
+                        .roundedCorner(DS.CornerRadius.xs, corners: [.bottomLeft, .topRight] )
                         .overlay {
                             Text(
                                 match.beginAt.formatted(
@@ -180,11 +181,11 @@ public struct MatchesListView: View {
                 }
             }
             .frame(height: UIScreen.main.bounds.width * 0.5)
-            .foregroundColor(Color(hex: "272639"))
+            .foregroundColor(DS.Colors.rowBackground)
     }
     
     func teamView(_ opponent: MatchesData.Opponent) -> some View {
-        VStack(spacing: 4) {
+        VStack(spacing: DS.Spacing.xxs) {
             Circle()
                 .padding()
                 .overlay {
@@ -224,50 +225,5 @@ public struct MatchesListView: View {
 struct MatchesListView_Previews: PreviewProvider {
     static var previews: some View {
         MatchesListView.init(store: .init(initialState: .init(matchesData: [.fixture()]), reducer: MatchesList()))
-    }
-}
-
-// TODO: -  Create design system to spacing and round corners and colors
-
-// TODO: - Common Extension Modules
-extension Collection {
-    /// Returns the element at the specified index if it is within bounds, otherwise nil.
-    subscript (safe index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
-    }
-}
-
-extension Color {
-    init?(hex: String) {
-        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
-        
-        var rgb: UInt64 = 0
-        
-        var r: CGFloat = 0.0
-        var g: CGFloat = 0.0
-        var b: CGFloat = 0.0
-        var a: CGFloat = 1.0
-        
-        let length = hexSanitized.count
-        
-        guard Scanner(string: hexSanitized).scanHexInt64(&rgb) else { return nil }
-        
-        if length == 6 {
-            r = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
-            g = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
-            b = CGFloat(rgb & 0x0000FF) / 255.0
-            
-        } else if length == 8 {
-            r = CGFloat((rgb & 0xFF000000) >> 24) / 255.0
-            g = CGFloat((rgb & 0x00FF0000) >> 16) / 255.0
-            b = CGFloat((rgb & 0x0000FF00) >> 8) / 255.0
-            a = CGFloat(rgb & 0x000000FF) / 255.0
-            
-        } else {
-            return nil
-        }
-        
-        self.init(red: r, green: g, blue: b, opacity: a)
     }
 }

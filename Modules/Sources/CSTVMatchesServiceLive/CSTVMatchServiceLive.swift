@@ -3,6 +3,7 @@ import Dependencies
 import Foundation
 import Networking
 import CSTVMatchesService
+import SharedExtensions
 
 public extension CSTVMatchesService {
     static let live: Self = .init(
@@ -11,19 +12,13 @@ public extension CSTVMatchesService {
                 from: CSTVEndpoint.matchesList(page: page, sort: sort),
                 responseModel: [MatchesDataResponse].self
             )
-            .mapError { _ in
-                    .decodingError
+            .mapError { error in
+                CommonErrors.text(error.customMessage)
             }
             .map { response in
                 response.map { data in
-                    // TODO: - Common Extension Modules
-                    let newFormatter = ISO8601DateFormatter()
-                    let date = newFormatter.date(from: data.beginAt ?? "")
-                    var dateFormatStyle = Date.FormatStyle.dateTime
-                    dateFormatStyle.timeZone = .current
-                    
-                    return MatchesData(
-                        beginAt: date ?? .now,
+                    MatchesData(
+                        beginAt: data.beginAt?.toFormattedDate() ?? .now,
                         id: String(data.id),
                         league: .init(
                             id: String(data.league.id),
@@ -57,12 +52,11 @@ public extension CSTVMatchesService {
                 from: CSTVEndpoint.getPlayers(teamID: teamID),
                 responseModel: [PlayersResponse].self
             )
-            .mapError { _ in
-                CommonErrors.decodingError
+            .mapError { error in
+                CommonErrors.text(error.customMessage)
             }
             .map { response in
                 response[0].players.map { player in
-                    
                     Players(
                         name: player.name,
                         imageURL: URL(string: player.imageURL ?? ""),
@@ -71,7 +65,6 @@ public extension CSTVMatchesService {
                     )
                 }
             }
-            
             .eraseToAnyPublisher()
         }
     )
