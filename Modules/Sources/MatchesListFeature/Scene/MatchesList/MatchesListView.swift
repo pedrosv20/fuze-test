@@ -152,18 +152,19 @@ public struct MatchesListView: View {
                 if match.status == .running {
                     Rectangle()
                         .foregroundColor( Color.red)
-                        .frame(width: UIScreen.main.bounds.width * 0.15, height: UIScreen.main.bounds.width * 0.05)
+                        .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.06)
                         .roundedCorner(8, corners: [.bottomLeft, .topRight] )
                         .overlay {
-                            Text("Agora")
+                            Text("AGORA")
                                 .foregroundColor(.white)
+                                .fontWeight(.bold)
                                 .padding()
                                 .minimumScaleFactor(0.5)
                         }
                 } else {
                     Rectangle()
                         .foregroundColor(Color(hex: "FAFAFA")?.opacity(0.2))
-                        .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.06)
+                        .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.06)
                         .roundedCorner(8, corners: [.bottomLeft, .topRight] )
                         .overlay {
                             Text(
