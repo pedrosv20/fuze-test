@@ -125,10 +125,13 @@ public struct MatchDetailView: View {
                                 Spacer()
                                 VStack(alignment: .trailing) {
                                     Text(player.name)
+                                        .minimumScaleFactor(0.5)
                                         .foregroundColor(.white)
                                         .font(Font.headline.weight(.bold))
                                     if let firstName = player.firstName, let lastName = player.lastName {
                                         Text("\(firstName) \(lastName)")
+                                            .lineLimit(1)
+                                            .minimumScaleFactor(0.3)
                                             .foregroundColor(.white)
                                             .font(.system(size: 12))
                                     }

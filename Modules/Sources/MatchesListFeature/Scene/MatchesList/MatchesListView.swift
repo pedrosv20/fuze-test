@@ -11,11 +11,12 @@ public struct MatchesListView: View {
     
     public var body: some View {
         NavigationStack {
-            ZStack {
-                Color(hex: "161621")
-                    .ignoresSafeArea()
-                
-                WithViewStore(store) { viewStore in
+            WithViewStore(store) { viewStore in
+                ZStack {
+                    Color(hex: "161621")
+                        .ignoresSafeArea()
+                    
+                    
                     if viewStore.state.matchesData.isEmpty {
                         
                         ProgressView()
@@ -42,50 +43,53 @@ public struct MatchesListView: View {
                                 HStack {
                                     Spacer()
                                     ProgressView()
-                                        .progressViewStyle(.circular)
+                                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                         .onAppear {
                                             viewStore.send(.requestData)
                                         }
                                         .listRowBackground(Color(hex: "161621"))
                                     Spacer()
                                 }
-                                .background(Color.clear)
+                                .listRowBackground(Color(hex: "161621"))
+                                .background(Color(hex: "161621"))
                                 
                             }
                         }
-                        .refreshable {
-                            viewStore.send(.refresh)
-                        }
-                        .background(Color(hex: "161621"))
-                        .edgesIgnoringSafeArea([.bottom, .horizontal])
-                        .scrollContentBackground(.hidden)
-                        .toolbarBackground(.visible, for: .navigationBar)
-                        .toolbarBackground(
-                            Color(hex: "161621") ?? Color.black,
-                            for: .navigationBar
-                        )
-                        .navigationTitle(viewStore.matchesData.isEmpty ? "" : "Partidas")
-                        .toolbarColorScheme(.dark, for: .navigationBar)
-                        .navigationDestination(
-                            isPresented: viewStore.binding(
-                                get: \.goToDetail,
-                                send: { MatchesList.Action.shouldShowDetail($0) }
-                            ),
-                            destination: {
-                                if let matchDetail = viewStore.matchDetailSelected {
-                                    MatchDetailView(
-                                        store: .init(
-                                            initialState: .init(
-                                                matchData: matchDetail
-                                            ),
-                                            reducer: MatchDetail()
-                                        )
-                                    )
-                                }
-                            }
-                        )
                     }
+                    
+                        
                 }
+                .refreshable {
+                    viewStore.send(.refresh)
+                }
+                .background(Color(hex: "161621"))
+                .edgesIgnoringSafeArea([.bottom, .horizontal])
+                .scrollContentBackground(.hidden)
+                .toolbarBackground(.visible, for: .navigationBar)
+                .toolbarBackground(
+                    Color(hex: "161621") ?? Color.black,
+                    for: .navigationBar
+                )
+                .navigationTitle(viewStore.matchesData.isEmpty ? "" : "Partidas")
+                .toolbarColorScheme(.dark, for: .navigationBar)
+                .navigationDestination(
+                    isPresented: viewStore.binding(
+                        get: \.goToDetail,
+                        send: { MatchesList.Action.shouldShowDetail($0) }
+                    ),
+                    destination: {
+                        if let matchDetail = viewStore.matchDetailSelected {
+                            MatchDetailView(
+                                store: .init(
+                                    initialState: .init(
+                                        matchData: matchDetail
+                                    ),
+                                    reducer: MatchDetail()
+                                )
+                            )
+                        }
+                    }
+                )
             }
         }
     }
@@ -148,18 +152,19 @@ public struct MatchesListView: View {
                 if match.status == .running {
                     Rectangle()
                         .foregroundColor( Color.red)
-                        .frame(width: UIScreen.main.bounds.width * 0.15, height: UIScreen.main.bounds.width * 0.05)
+                        .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.06)
                         .roundedCorner(8, corners: [.bottomLeft, .topRight] )
                         .overlay {
-                            Text("Agora")
+                            Text("AGORA")
                                 .foregroundColor(.white)
+                                .fontWeight(.bold)
                                 .padding()
                                 .minimumScaleFactor(0.5)
                         }
                 } else {
                     Rectangle()
                         .foregroundColor(Color(hex: "FAFAFA")?.opacity(0.2))
-                        .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.06)
+                        .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.06)
                         .roundedCorner(8, corners: [.bottomLeft, .topRight] )
                         .overlay {
                             Text(
