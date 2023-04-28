@@ -32,7 +32,9 @@ public struct MatchesListView: View {
                                    let _ = match.opponents[safe: 1]
                                 {
                                     matchView(match)
+                                        .edgesIgnoringSafeArea(.horizontal)
                                         .listRowBackground(DS.Colors.mainBackground)
+                                        .listRowSeparator(.hidden)
                                         .onTapGesture {
                                             viewStore.send(.matchselected(match.id))
                                         }
@@ -51,19 +53,18 @@ public struct MatchesListView: View {
                                         .listRowBackground(DS.Colors.mainBackground)
                                     Spacer()
                                 }
+                                .listRowSeparator(.hidden)
                                 .listRowBackground(DS.Colors.mainBackground)
                                 .background(DS.Colors.mainBackground)
-                                
                             }
                         }
+                        .listStyle(PlainListStyle())
                     }
-                    
-                        
                 }
                 .refreshable {
                     viewStore.send(.refresh)
                 }
-                .background(DS.Colors.mainBackground)
+                .background(Color.blue)
                 .edgesIgnoringSafeArea([.bottom, .horizontal])
                 .scrollContentBackground(.hidden)
                 .toolbarBackground(.visible, for: .navigationBar)
@@ -106,8 +107,8 @@ public struct MatchesListView: View {
                         }
                         
                         Text("VS")
-                            .foregroundColor(.white)
-                            .font(.system(size: 12))
+                            .setCustomFontTo(.regular(size: DS.FontSize.small12))
+                            .foregroundColor(DS.Colors.white.opacity(0.20)) // TODO: - DS opacity
                         
                         if let opponents = match.opponents[safe: 1] {
                             teamView(opponents.opponent)
@@ -120,7 +121,7 @@ public struct MatchesListView: View {
                     
                     Rectangle()
                         .frame(height: 1)
-                        .foregroundColor(.black)
+                        .foregroundColor(DS.Colors.white.opacity(0.20))
                     
                     HStack {
                         Circle()
@@ -135,14 +136,14 @@ public struct MatchesListView: View {
                                         ProgressView()
                                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                     } else {
-                                        Circle().foregroundColor(.gray)
+                                        Circle().foregroundColor(DS.Colors.placeholder)
                                     }
                                     
                                 }
                             }
                         Text("\(match.league.name) \(match.serie.fullName)")
-                            .foregroundColor(.white)
-                            .font(.system(size: 8))
+                            .setCustomFontTo(.regular(size: DS.FontSize.small10))
+                            .foregroundColor(DS.Colors.white)
                         
                         Spacer()
                     }
@@ -153,20 +154,19 @@ public struct MatchesListView: View {
                 if match.status == .running {
                     Rectangle()
                         .foregroundColor( Color.red)
-                        .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.06)
-                        .roundedCorner(8, corners: [.bottomLeft, .topRight] )
+                        .frame(width: UIScreen.main.bounds.width * 0.12, height: UIScreen.main.bounds.width * 0.06)
+                        .roundedCorner(DS.CornerRadius.m, corners: [.bottomLeft, .topRight] )
                         .overlay {
                             Text("AGORA")
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
-                                .padding()
+                                .setCustomFontTo(.bold(size: DS.FontSize.small10))
+                                .foregroundColor(DS.Colors.white)
                                 .minimumScaleFactor(0.5)
                         }
                 } else {
                     Rectangle()
                         .foregroundColor(DS.Colors.timeRectangle?.opacity(0.2))
                         .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.06)
-                        .roundedCorner(DS.CornerRadius.xs, corners: [.bottomLeft, .topRight] )
+                        .roundedCorner(DS.CornerRadius.m, corners: [.bottomLeft, .topRight] )
                         .overlay {
                             Text(
                                 match.beginAt.formatted(
@@ -174,20 +174,21 @@ public struct MatchesListView: View {
                                     time: .shortened
                                 )
                             )
-                            .foregroundColor(.white)
-                            .padding()
-                            .minimumScaleFactor(0.5)
+                            .setCustomFontTo(.bold(size: DS.FontSize.small10))
+                            .foregroundColor(DS.Colors.white)
+//                            .minimumScaleFactor(0.8)
                         }
                 }
             }
-            .frame(height: UIScreen.main.bounds.width * 0.5)
+            .frame(height: UIScreen.main.bounds.width * 0.45)
             .foregroundColor(DS.Colors.rowBackground)
     }
     
     func teamView(_ opponent: MatchesData.Opponent) -> some View {
         VStack(spacing: DS.Spacing.xxs) {
             Circle()
-                .padding()
+                .frame(width: 60, height: 60)
+
                 .overlay {
                     AsyncImage(url: URL(string: opponent.imageURL ?? "")) { image in
                         image.resizable()
@@ -198,7 +199,7 @@ public struct MatchesListView: View {
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         } else {
-                            Circle().foregroundColor(.gray)
+                            Circle().foregroundColor(DS.Colors.placeholder)
                         }
                         
                     }
@@ -208,14 +209,15 @@ public struct MatchesListView: View {
             HStack {
                 Spacer()
                 Text(opponent.name)
-                    .foregroundColor(.white)
-                    .font(Font.headline.weight(.bold))
+                    .setCustomFontTo(.bold(size: DS.FontSize.small12))
+                    .foregroundColor(DS.Colors.white)
                     .lineLimit(1)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
-                    .minimumScaleFactor(0.2)
+                    .minimumScaleFactor(0.5)
                 Spacer()
             }
+            .padding(.top, DS.Spacing.xs)
             
         }
         .padding(.vertical)

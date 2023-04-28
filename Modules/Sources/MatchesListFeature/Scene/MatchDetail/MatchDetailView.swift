@@ -47,8 +47,8 @@ public struct MatchDetailView: View {
                 
                 
                 Text("VS")
-                    .foregroundColor(.white)
-                    .font(.system(size: 12))
+                    .setCustomFontTo(.regular(size: DS.FontSize.small12))
+                    .foregroundColor(DS.Colors.white.opacity(0.20)) // DS opacity
                 
                 if let opponents = match.opponents[safe: 1] {
                     teamView(opponents.opponent)
@@ -63,19 +63,19 @@ public struct MatchDetailView: View {
                         .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.12)
                         .overlay {
                             Text("Live")
-                                .font(Font.caption.weight(.bold))
-                                .foregroundColor(.white)
+                                .setCustomFontTo(.bold(size: DS.FontSize.small12))
+                                .foregroundColor(DS.Colors.white)
                         }
                     
                     Text("Hoje \(match.beginAt.formatted(date: .omitted, time: .shortened))")
-                        .font(Font.caption.weight(.bold))
-                        .foregroundColor(.white)
+                        .setCustomFontTo(.bold(size: DS.FontSize.small12))
+                        .foregroundColor(DS.Colors.white)
                 }
                 
             } else {
                 Text(match.beginAt.formatted(date: .abbreviated, time: .shortened))
-                    .font(Font.caption.weight(.bold))
-                    .foregroundColor(.white)
+                    .setCustomFontTo(.bold(size: DS.FontSize.small12))
+                    .foregroundColor(DS.Colors.white)
             }
             
             
@@ -91,7 +91,7 @@ public struct MatchDetailView: View {
         VStack(spacing: .zero) {
             Circle()
                 .foregroundColor(.clear)
-                .padding(DS.Spacing.l)
+                .padding(DS.Spacing.xl)
                 .overlay {
                     AsyncImage(url: URL(string: opponent.imageURL ?? "")) { image in
                         image.resizable()
@@ -103,14 +103,14 @@ public struct MatchDetailView: View {
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         } else {
-                            Circle().foregroundColor(.gray)
+                            Circle().foregroundColor(DS.Colors.placeholder)
                         }
                         
                     }
                 }
             Text(opponent.name)
-                .foregroundColor(.white)
-                .font(Font.headline.weight(.bold))
+                .setCustomFontTo(.bold(size: DS.FontSize.small12))
+                .foregroundColor(DS.Colors.white)
         }
         .padding(.vertical)
     }
@@ -127,32 +127,32 @@ public struct MatchDetailView: View {
                                 Spacer()
                                 VStack(alignment: .trailing) {
                                     Text(player.name)
+                                        .setCustomFontTo(.bold(size: DS.FontSize.medium))
+                                        .foregroundColor(DS.Colors.white)
                                         .minimumScaleFactor(0.4)
                                         .lineLimit(1)
-                                        .foregroundColor(.white)
-                                        .font(Font.headline.weight(.bold))
                                     if let firstName = player.firstName, let lastName = player.lastName {
                                         Text("\(firstName) \(lastName)")
+                                            .setCustomFontTo(.regular(size: DS.FontSize.small12))
+                                            .foregroundColor(DS.Colors.white)
                                             .lineLimit(1)
                                             .minimumScaleFactor(0.3)
-                                            .foregroundColor(.white)
-                                            .font(.system(size: 12))
                                     }
                                 }
                                 .frame(alignment: .trailing)
                                 
                                 AsyncImage(url: player.imageURL) { image in
-                                    image.resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 60, height: 60)
+                                    image
+                                        .resizable()
+                                        .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
                                 } placeholder: {
                                     if player.imageURL != nil {
                                         ProgressView()
                                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                     } else {
                                         RoundedRectangle(cornerRadius: DS.CornerRadius.xs)
-                                            .frame(width: 60, height: 60)
-                                            .foregroundColor(.gray)
+                                            .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
+                                            .foregroundColor(DS.Colors.placeholder)
                                     }
                                     
                                 }
@@ -170,18 +170,14 @@ public struct MatchDetailView: View {
                                 Spacer()
                                 VStack(alignment: .trailing) {
                                     Text("")
-                                        .foregroundColor(.white)
-                                        .font(Font.headline.weight(.bold))
                                     Text("")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 12))
                                     
                                 }
                                 .frame(alignment: .trailing)
                                 
                                 RoundedRectangle(cornerRadius: DS.CornerRadius.xs)
-                                    .frame(width: 60, height: 60)
-                                    .foregroundColor(.gray)
+                                    .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
+                                    .foregroundColor(DS.Colors.placeholder)
                                     .offset(x: -5, y: -7)
                             }
                             .environment(\.layoutDirection, alignment == .leading ? .leftToRight : .rightToLeft)
