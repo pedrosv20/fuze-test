@@ -43,14 +43,15 @@ public struct MatchesListView: View {
                                 HStack {
                                     Spacer()
                                     ProgressView()
-                                        .progressViewStyle(.circular)
+                                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                         .onAppear {
                                             viewStore.send(.requestData)
                                         }
                                         .listRowBackground(Color(hex: "161621"))
                                     Spacer()
                                 }
-                                .background(Color.clear)
+                                .listRowBackground(Color(hex: "161621"))
+                                .background(Color(hex: "161621"))
                                 
                             }
                         }
