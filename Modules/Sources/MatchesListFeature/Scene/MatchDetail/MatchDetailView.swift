@@ -105,9 +105,9 @@ public struct MatchDetailView: View {
                         } else {
                             Circle().foregroundColor(DS.Colors.placeholder)
                         }
-                        
                     }
                 }
+
             Text(opponent.name)
                 .setCustomFontTo(.bold(size: DS.FontSize.small12))
                 .foregroundColor(DS.Colors.white)

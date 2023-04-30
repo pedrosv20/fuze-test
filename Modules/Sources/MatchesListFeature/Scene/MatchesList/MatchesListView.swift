@@ -201,7 +201,6 @@ public struct MatchesListView: View {
                         } else {
                             Circle().foregroundColor(DS.Colors.placeholder)
                         }
-                        
                     }
                 }
             
