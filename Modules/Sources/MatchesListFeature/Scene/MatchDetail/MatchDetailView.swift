@@ -1,5 +1,7 @@
 import ComposableArchitecture
 import CSTVMatchesService
+import DesignSystem
+import SharedExtensions
 import SwiftUI
 
 public struct MatchDetailView: View {
@@ -12,7 +14,7 @@ public struct MatchDetailView: View {
     public var body: some View {
         WithViewStore(store) { viewStore in
             ZStack {
-                Color(hex: "161621")
+                DS.Colors.mainBackground
                     .ignoresSafeArea()
                 if
                     let playersTeam1 = viewStore.playersTeam1,
@@ -45,35 +47,35 @@ public struct MatchDetailView: View {
                 
                 
                 Text("VS")
-                    .foregroundColor(.white)
-                    .font(.system(size: 12))
+                    .setCustomFontTo(.regular(size: DS.FontSize.small12))
+                    .foregroundColor(DS.Colors.white.opacity(0.20)) // DS opacity
                 
                 if let opponents = match.opponents[safe: 1] {
                     teamView(opponents.opponent)
                 }
             }
-            .padding(.top, 16)
+            .padding(.top, DS.Spacing.m)
             
             if match.status == .running {
                 VStack {
-                    RoundedRectangle(cornerRadius: 8)
+                    RoundedRectangle(cornerRadius: DS.CornerRadius.xs)
                         .foregroundColor( Color.red)
                         .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.12)
                         .overlay {
                             Text("Live")
-                                .font(Font.caption.weight(.bold))
-                                .foregroundColor(.white)
+                                .setCustomFontTo(.bold(size: DS.FontSize.small12))
+                                .foregroundColor(DS.Colors.white)
                         }
                     
                     Text("Hoje \(match.beginAt.formatted(date: .omitted, time: .shortened))")
-                        .font(Font.caption.weight(.bold))
-                        .foregroundColor(.white)
+                        .setCustomFontTo(.bold(size: DS.FontSize.small12))
+                        .foregroundColor(DS.Colors.white)
                 }
                 
             } else {
                 Text(match.beginAt.formatted(date: .abbreviated, time: .shortened))
-                    .font(Font.caption.weight(.bold))
-                    .foregroundColor(.white)
+                    .setCustomFontTo(.bold(size: DS.FontSize.small12))
+                    .foregroundColor(DS.Colors.white)
             }
             
             
@@ -89,96 +91,93 @@ public struct MatchDetailView: View {
         VStack(spacing: .zero) {
             Circle()
                 .foregroundColor(.clear)
-                .padding(26)
+                .padding(DS.Spacing.xl)
                 .overlay {
                     AsyncImage(url: URL(string: opponent.imageURL ?? "")) { image in
                         image.resizable()
                             .aspectRatio(contentMode: .fit)
-                            .padding(26)
+                            .padding(DS.Spacing.l)
                     } placeholder: {
                         if let imageURL = opponent.imageURL,
                            let _ = URL(string: imageURL) {
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         } else {
-                            Circle().foregroundColor(.gray)
+                            Circle().foregroundColor(DS.Colors.placeholder)
                         }
-                        
                     }
                 }
+
             Text(opponent.name)
-                .foregroundColor(.white)
-                .font(Font.headline.weight(.bold))
+                .setCustomFontTo(.bold(size: DS.FontSize.small12))
+                .foregroundColor(DS.Colors.white)
         }
         .padding(.vertical)
     }
     
     func playersView(_ players: [Players], alignment: HorizontalAlignment) -> some View {
-        VStack(spacing: 16) {
+        VStack(spacing: DS.Spacing.m) {
             ForEach(0..<5) { value in
                 if let player = players[safe: value] {
                     Rectangle()
-                        .roundedCorner(8, corners: alignment == .leading ? [.bottomRight, .topRight] : [.bottomLeft, .topLeft])
-                        .foregroundColor(Color(hex: "272639"))
+                        .roundedCorner(DS.CornerRadius.xs, corners: alignment == .leading ? [.bottomRight, .topRight] : [.bottomLeft, .topLeft])
+                        .foregroundColor(DS.Colors.rowBackground)
                         .overlay {
-                            HStack(spacing: 12) {
+                            HStack(spacing: DS.Spacing.s) {
                                 Spacer()
                                 VStack(alignment: .trailing) {
                                     Text(player.name)
-                                        .minimumScaleFactor(0.5)
-                                        .foregroundColor(.white)
-                                        .font(Font.headline.weight(.bold))
+                                        .setCustomFontTo(.bold(size: DS.FontSize.medium))
+                                        .foregroundColor(DS.Colors.white)
+                                        .minimumScaleFactor(0.4)
+                                        .lineLimit(1)
                                     if let firstName = player.firstName, let lastName = player.lastName {
                                         Text("\(firstName) \(lastName)")
+                                            .setCustomFontTo(.regular(size: DS.FontSize.small12))
+                                            .foregroundColor(DS.Colors.white)
                                             .lineLimit(1)
                                             .minimumScaleFactor(0.3)
-                                            .foregroundColor(.white)
-                                            .font(.system(size: 12))
                                     }
                                 }
                                 .frame(alignment: .trailing)
                                 
                                 AsyncImage(url: player.imageURL) { image in
-                                    image.resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 60, height: 60)
+                                    image
+                                        .resizable()
+                                        .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
                                 } placeholder: {
                                     if player.imageURL != nil {
                                         ProgressView()
                                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                     } else {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .frame(width: 60, height: 60)
-                                            .foregroundColor(.gray)
+                                        RoundedRectangle(cornerRadius: DS.CornerRadius.xs)
+                                            .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
+                                            .foregroundColor(DS.Colors.placeholder)
                                     }
                                     
                                 }
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .clipShape(RoundedRectangle(cornerRadius: DS.CornerRadius.xs))
                                 .offset(x: -5, y: -7)
                             }
                             .environment(\.layoutDirection, alignment == .leading ? .leftToRight : .rightToLeft)
                         }
                 } else {
                     Rectangle()
-                        .roundedCorner(8, corners: alignment == .leading ? [.bottomRight, .topRight] : [.bottomLeft, .topLeft])
-                        .foregroundColor(Color(hex: "272639"))
+                        .roundedCorner(DS.CornerRadius.xs, corners: alignment == .leading ? [.bottomRight, .topRight] : [.bottomLeft, .topLeft])
+                        .foregroundColor(DS.Colors.rowBackground)
                         .overlay {
-                            HStack(spacing: 12) {
+                            HStack(spacing: DS.Spacing.s) {
                                 Spacer()
                                 VStack(alignment: .trailing) {
                                     Text("")
-                                        .foregroundColor(.white)
-                                        .font(Font.headline.weight(.bold))
                                     Text("")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 12))
                                     
                                 }
                                 .frame(alignment: .trailing)
                                 
-                                RoundedRectangle(cornerRadius: 8)
-                                    .frame(width: 60, height: 60)
-                                    .foregroundColor(.gray)
+                                RoundedRectangle(cornerRadius: DS.CornerRadius.xs)
+                                    .frame(minWidth: 30, maxWidth: 60, minHeight: 30, maxHeight: 60)
+                                    .foregroundColor(DS.Colors.placeholder)
                                     .offset(x: -5, y: -7)
                             }
                             .environment(\.layoutDirection, alignment == .leading ? .leftToRight : .rightToLeft)
@@ -196,20 +195,3 @@ public struct MatchDetailView: View {
 //        MatchDetailView.init(store: .init(initialState: .init(selectedMatch: "", matchData: .fixture()), reducer: MatchDetail()))
 //    }
 //}
-
-// TODO: - Create CommonExtensions Module
-struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-    
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        return Path(path.cgPath)
-    }
-}
-
-extension View {
-    func roundedCorner(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners) )
-    }
-}

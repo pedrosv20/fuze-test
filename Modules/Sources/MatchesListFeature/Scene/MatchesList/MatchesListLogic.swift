@@ -6,6 +6,7 @@ public struct MatchesList: ReducerProtocol {
     public struct State: Equatable {
         var matchesData: [MatchesData]
         var goToDetail = false
+        var shouldResetData = false
         var matchDetailSelected: MatchesData? = nil
         var currentPage: Int
         var finishDownloading: Bool
@@ -42,6 +43,10 @@ public struct MatchesList: ReducerProtocol {
                 
 
             case let .handleRequestedData(.success(model)):
+                if state.shouldResetData {
+                    state.matchesData = []
+                    state.shouldResetData = false
+                }
                 for match in model {
                     state.matchesData.append(match)
                 }
@@ -55,8 +60,8 @@ public struct MatchesList: ReducerProtocol {
                 return .none
             
             case .refresh:
-                state.matchesData = []
                 state.currentPage = 0
+                state.shouldResetData = true
                 return .init(value: .requestData)
             
             case let .matchselected(id):

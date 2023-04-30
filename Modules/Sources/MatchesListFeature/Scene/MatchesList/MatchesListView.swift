@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import CSTVMatchesService
+import DesignSystem
 import SwiftUI
 
 public struct MatchesListView: View {
@@ -13,7 +14,7 @@ public struct MatchesListView: View {
         NavigationStack {
             WithViewStore(store) { viewStore in
                 ZStack {
-                    Color(hex: "161621")
+                    DS.Colors.mainBackground
                         .ignoresSafeArea()
                     
                     
@@ -22,7 +23,7 @@ public struct MatchesListView: View {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                             .onAppear { viewStore.send(.onAppear) }
-                            .background(Color(hex: "161621"))
+                            .background(DS.Colors.mainBackground)
                             .edgesIgnoringSafeArea(.all)
                     } else {
                         List {
@@ -31,7 +32,9 @@ public struct MatchesListView: View {
                                    let _ = match.opponents[safe: 1]
                                 {
                                     matchView(match)
-                                        .listRowBackground(Color(hex: "161621"))
+                                        .edgesIgnoringSafeArea(.horizontal)
+                                        .listRowBackground(DS.Colors.mainBackground)
+                                        .listRowSeparator(.hidden)
                                         .onTapGesture {
                                             viewStore.send(.matchselected(match.id))
                                         }
@@ -47,27 +50,26 @@ public struct MatchesListView: View {
                                         .onAppear {
                                             viewStore.send(.requestData)
                                         }
-                                        .listRowBackground(Color(hex: "161621"))
+                                        .listRowBackground(DS.Colors.mainBackground)
                                     Spacer()
                                 }
-                                .listRowBackground(Color(hex: "161621"))
-                                .background(Color(hex: "161621"))
-                                
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(DS.Colors.mainBackground)
+                                .background(DS.Colors.mainBackground)
                             }
                         }
+                        .listStyle(PlainListStyle())
                     }
-                    
-                        
                 }
                 .refreshable {
                     viewStore.send(.refresh)
                 }
-                .background(Color(hex: "161621"))
+                .background(Color.blue)
                 .edgesIgnoringSafeArea([.bottom, .horizontal])
                 .scrollContentBackground(.hidden)
                 .toolbarBackground(.visible, for: .navigationBar)
                 .toolbarBackground(
-                    Color(hex: "161621") ?? Color.black,
+                    DS.Colors.mainBackground ?? Color.black,
                     for: .navigationBar
                 )
                 .navigationTitle(viewStore.matchesData.isEmpty ? "" : "Partidas")
@@ -95,7 +97,7 @@ public struct MatchesListView: View {
     }
     
     public func matchView(_ match: MatchesData) -> some View {
-        RoundedRectangle(cornerRadius: 16)
+        RoundedRectangle(cornerRadius: DS.CornerRadius.m)
             .overlay {
                 VStack {
                     HStack(alignment: .center, spacing: .zero) {
@@ -105,21 +107,21 @@ public struct MatchesListView: View {
                         }
                         
                         Text("VS")
-                            .foregroundColor(.white)
-                            .font(.system(size: 12))
+                            .setCustomFontTo(.regular(size: DS.FontSize.small12))
+                            .foregroundColor(DS.Colors.white.opacity(0.20)) // TODO: - DS opacity
                         
                         if let opponents = match.opponents[safe: 1] {
                             teamView(opponents.opponent)
                         }
                         Spacer()
                     }
-                    .padding(.top, 16)
+                    .padding(.top, DS.Spacing.m)
                     
                     Spacer()
                     
                     Rectangle()
                         .frame(height: 1)
-                        .foregroundColor(.black)
+                        .foregroundColor(DS.Colors.white.opacity(0.20))
                     
                     HStack {
                         Circle()
@@ -134,38 +136,37 @@ public struct MatchesListView: View {
                                         ProgressView()
                                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                     } else {
-                                        Circle().foregroundColor(.gray)
+                                        Circle().foregroundColor(DS.Colors.placeholder)
                                     }
                                     
                                 }
                             }
                         Text("\(match.league.name) \(match.serie.fullName)")
-                            .foregroundColor(.white)
-                            .font(.system(size: 8))
+                            .setCustomFontTo(.regular(size: DS.FontSize.small10))
+                            .foregroundColor(DS.Colors.white)
                         
                         Spacer()
                     }
-                    .padding([.bottom, .leading], 8)
+                    .padding([.bottom, .leading], DS.Spacing.xs)
                 }
             }
             .overlay(alignment: .topTrailing) {
                 if match.status == .running {
                     Rectangle()
                         .foregroundColor( Color.red)
-                        .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.width * 0.06)
-                        .roundedCorner(8, corners: [.bottomLeft, .topRight] )
+                        .frame(width: UIScreen.main.bounds.width * 0.12, height: UIScreen.main.bounds.width * 0.06)
+                        .roundedCorner(DS.CornerRadius.m, corners: [.bottomLeft, .topRight] )
                         .overlay {
                             Text("AGORA")
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
-                                .padding()
+                                .setCustomFontTo(.bold(size: DS.FontSize.small10))
+                                .foregroundColor(DS.Colors.white)
                                 .minimumScaleFactor(0.5)
                         }
                 } else {
                     Rectangle()
-                        .foregroundColor(Color(hex: "FAFAFA")?.opacity(0.2))
+                        .foregroundColor(DS.Colors.timeRectangle?.opacity(0.2))
                         .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.06)
-                        .roundedCorner(8, corners: [.bottomLeft, .topRight] )
+                        .roundedCorner(DS.CornerRadius.m, corners: [.bottomLeft, .topRight] )
                         .overlay {
                             Text(
                                 match.beginAt.formatted(
@@ -173,20 +174,21 @@ public struct MatchesListView: View {
                                     time: .shortened
                                 )
                             )
-                            .foregroundColor(.white)
-                            .padding()
-                            .minimumScaleFactor(0.5)
+                            .setCustomFontTo(.bold(size: DS.FontSize.small10))
+                            .foregroundColor(DS.Colors.white)
+//                            .minimumScaleFactor(0.8)
                         }
                 }
             }
-            .frame(height: UIScreen.main.bounds.width * 0.5)
-            .foregroundColor(Color(hex: "272639"))
+            .frame(height: UIScreen.main.bounds.width * 0.45)
+            .foregroundColor(DS.Colors.rowBackground)
     }
     
     func teamView(_ opponent: MatchesData.Opponent) -> some View {
-        VStack(spacing: 4) {
+        VStack(spacing: DS.Spacing.xxs) {
             Circle()
-                .padding()
+                .frame(width: 60, height: 60)
+
                 .overlay {
                     AsyncImage(url: URL(string: opponent.imageURL ?? "")) { image in
                         image.resizable()
@@ -197,9 +199,8 @@ public struct MatchesListView: View {
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         } else {
-                            Circle().foregroundColor(.gray)
+                            Circle().foregroundColor(DS.Colors.placeholder)
                         }
-                        
                     }
                 }
             
@@ -207,14 +208,15 @@ public struct MatchesListView: View {
             HStack {
                 Spacer()
                 Text(opponent.name)
-                    .foregroundColor(.white)
-                    .font(Font.headline.weight(.bold))
+                    .setCustomFontTo(.bold(size: DS.FontSize.small12))
+                    .foregroundColor(DS.Colors.white)
                     .lineLimit(1)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
-                    .minimumScaleFactor(0.2)
+                    .minimumScaleFactor(0.5)
                 Spacer()
             }
+            .padding(.top, DS.Spacing.xs)
             
         }
         .padding(.vertical)
@@ -224,50 +226,5 @@ public struct MatchesListView: View {
 struct MatchesListView_Previews: PreviewProvider {
     static var previews: some View {
         MatchesListView.init(store: .init(initialState: .init(matchesData: [.fixture()]), reducer: MatchesList()))
-    }
-}
-
-// TODO: -  Create design system to spacing and round corners and colors
-
-// TODO: - Common Extension Modules
-extension Collection {
-    /// Returns the element at the specified index if it is within bounds, otherwise nil.
-    subscript (safe index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
-    }
-}
-
-extension Color {
-    init?(hex: String) {
-        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
-        
-        var rgb: UInt64 = 0
-        
-        var r: CGFloat = 0.0
-        var g: CGFloat = 0.0
-        var b: CGFloat = 0.0
-        var a: CGFloat = 1.0
-        
-        let length = hexSanitized.count
-        
-        guard Scanner(string: hexSanitized).scanHexInt64(&rgb) else { return nil }
-        
-        if length == 6 {
-            r = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
-            g = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
-            b = CGFloat(rgb & 0x0000FF) / 255.0
-            
-        } else if length == 8 {
-            r = CGFloat((rgb & 0xFF000000) >> 24) / 255.0
-            g = CGFloat((rgb & 0x00FF0000) >> 16) / 255.0
-            b = CGFloat((rgb & 0x0000FF00) >> 8) / 255.0
-            a = CGFloat(rgb & 0x000000FF) / 255.0
-            
-        } else {
-            return nil
-        }
-        
-        self.init(red: r, green: g, blue: b, opacity: a)
     }
 }

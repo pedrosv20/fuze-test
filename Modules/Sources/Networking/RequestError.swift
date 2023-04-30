@@ -6,7 +6,7 @@ public enum RequestError: Error, Equatable {
     case noResponse
     case unknown
     
-    var customMessage: String {
+    public var customMessage: String {
         switch self {
         case let .decode(object):
             return "Error decoding data from \(object)"

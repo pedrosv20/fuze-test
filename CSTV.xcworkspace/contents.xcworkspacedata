@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:CSTV.xcodeproj">
+      location = "group:Modules">
    </FileRef>
    <FileRef
-      location = "group:Modules">
+      location = "group:CSTV.xcodeproj">
    </FileRef>
 </Workspace>
