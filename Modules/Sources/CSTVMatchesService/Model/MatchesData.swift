@@ -30,7 +30,7 @@ public struct MatchesData: Equatable {
         self.opponents = opponents
     }
     
-    public struct League: Equatable {
+    public struct League: Equatable, Sendable {
         public let id: String
         public let imageURL: String?
         public let name: String
@@ -49,12 +49,12 @@ public struct MatchesData: Equatable {
         }
     }
     
-    public enum Status: String, Equatable {
+    public enum Status: String, Equatable, Sendable {
         case notStarted = "not_started"
         case running = "running"
     }
     
-    public struct Serie: Equatable {
+    public struct Serie: Equatable, Sendable {
         public let fullName: String
 
         public init(
@@ -64,7 +64,7 @@ public struct MatchesData: Equatable {
         }
     }
 
-    public struct Opponents: Equatable {
+    public struct Opponents: Equatable, Sendable {
         public let opponent: Opponent
         
         public init(
@@ -74,7 +74,7 @@ public struct MatchesData: Equatable {
         }
     }
 
-    public struct Opponent: Equatable {
+    public struct Opponent: Equatable, Sendable {
         public let id: String
         public let imageURL: String?
         public let name: String
@@ -91,7 +91,7 @@ public struct MatchesData: Equatable {
 
 public extension MatchesData {
     static func fixture(
-        beginAt: Date = .now,
+        beginAt: Date = .init(timeIntervalSinceReferenceDate: 622_177_2000),
         id: String = UUID().uuidString,
         league: League = .fixture(),
         serie: Serie = .fixture(),

@@ -49,8 +49,7 @@ public extension HTTPClient {
                         
                         return decodedResponse
                     } catch {
-                        print(error)
-                        throw RequestError.decode(String(describing: responseModel.self))
+                        throw RequestError.decode("\(error.localizedDescription) \(String(describing: responseModel.self))")
                     }
                     
                     
@@ -62,7 +61,7 @@ public extension HTTPClient {
             }
             .mapError { error in
                 guard let requestError = error as? RequestError else {
-                    return .unknown
+                    return .text(error.localizedDescription)
                 }
                 return requestError
             }

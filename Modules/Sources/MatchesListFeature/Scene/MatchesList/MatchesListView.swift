@@ -1,3 +1,4 @@
+import Combine
 import ComposableArchitecture
 import CSTVMatchesService
 import DesignSystem
@@ -17,15 +18,24 @@ public struct MatchesListView: View {
                     DS.Colors.mainBackground
                         .ignoresSafeArea()
                     
-                    
-                    if viewStore.state.matchesData.isEmpty {
-                        
+                    if let error = viewStore.state.error {
+                        ErrorView(
+                            error: error.customMessage, retryButtonAction: {
+                                CSTVMatchesService.getMatchesListResponseToBeReturned = Just([.fixture()])
+                                    .setFailureType(to: CommonErrors.self)
+                                    .eraseToAnyPublisher()
+                                viewStore.send(.refresh)
+                            }
+                        )
+                    }
+                    else if viewStore.state.matchesData.isEmpty {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                             .onAppear { viewStore.send(.onAppear) }
                             .background(DS.Colors.mainBackground)
                             .edgesIgnoringSafeArea(.all)
-                    } else {
+                    }
+                    else {
                         List {
                             ForEach(viewStore.matchesData, id: \.id) { match in
                                 if let _ = match.opponents[safe: 0],
@@ -36,7 +46,7 @@ public struct MatchesListView: View {
                                         .listRowBackground(DS.Colors.mainBackground)
                                         .listRowSeparator(.hidden)
                                         .onTapGesture {
-                                            viewStore.send(.matchselected(match.id))
+                                            viewStore.send(.matchSelected(match.id))
                                         }
                                 }
                                 

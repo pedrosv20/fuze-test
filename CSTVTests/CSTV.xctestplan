@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "AB1B35F1-331D-43C0-A545-8D715708BEC2",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:CSTV.xcodeproj",
+      "identifier" : "07DECCD529F6EF9B0023708B",
+      "name" : "CSTV"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:CSTV.xcodeproj",
+        "identifier" : "07DECCE529F6EF9E0023708B",
+        "name" : "CSTVTests"
+      }
+    }
+  ],
+  "version" : 1
+}

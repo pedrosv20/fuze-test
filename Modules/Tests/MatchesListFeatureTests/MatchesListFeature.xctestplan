@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "8F86BBCB-A52F-42E8-9889-DE6E45F8409B",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "MatchesListFeatureTests",
+        "name" : "MatchesListFeatureTests"
+      }
+    }
+  ],
+  "version" : 1
+}

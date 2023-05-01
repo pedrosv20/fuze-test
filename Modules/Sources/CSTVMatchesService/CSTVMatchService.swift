@@ -16,7 +16,7 @@ public struct CSTVMatchesService {
 }
 
 extension CSTVMatchesService: TestDependencyKey {
-    public static let testValue: CSTVMatchesService = .mock
+    public static let testValue: CSTVMatchesService = .mock()
 }
 
 extension DependencyValues {
@@ -26,12 +26,20 @@ extension DependencyValues {
     }
 }
 
+#if DEBUG
 extension CSTVMatchesService {
-    public static var mock: Self = .init(getMatchesList: { _, _ in
-        Fail(error: .text("failed mock"))
-            .eraseToAnyPublisher()
-    }, getPlayers: { _ in
-        Fail(error: .text("failed mock"))
-            .eraseToAnyPublisher()
-    })
+    public static var getMatchesListResponseToBeReturned: AnyPublisher<[MatchesData], CommonErrors> = Fail(error: .text("needs to implement matchesList mock"))
+        .eraseToAnyPublisher()
+    
+    public static var getPlayersResponseToBeReturned: AnyPublisher<[Players], CommonErrors> = Fail(error: .text("needs to implement players mock"))
+        .eraseToAnyPublisher()
+
+    public static func mock() -> Self {
+        .init(getMatchesList: { _, _ in
+            return getMatchesListResponseToBeReturned
+        }, getPlayers: { _ in
+            return getPlayersResponseToBeReturned
+        })
+    }
 }
+#endif

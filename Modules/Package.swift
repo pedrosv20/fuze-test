@@ -17,7 +17,11 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", branch: "main"),
-        .package(url: "https://github.com/pointfreeco/swift-dependencies", branch: "main")
+        .package(url: "https://github.com/pointfreeco/swift-dependencies", branch: "main"),
+        .package(
+            url: "git@github.com:pointfreeco/swift-snapshot-testing.git",
+            from: "1.9.0"
+        )
     ],
     targets: [
         // CSGOMatchesService
@@ -74,7 +78,11 @@ fileprivate extension Target {
     
     static var matchesListFeatureTests = Target.testTarget(
         name: "MatchesListFeatureTests",
-        dependencies: ["MatchesListFeature"]
+        dependencies: [
+            "MatchesListFeature",
+            "CSTVMatchesService",
+            .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
+        ]
     )
 }
 

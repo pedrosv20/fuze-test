@@ -5,6 +5,7 @@ public enum RequestError: Error, Equatable {
     case unexpectedStatusCode
     case noResponse
     case unknown
+    case text(String)
     
     public var customMessage: String {
         switch self {
@@ -12,6 +13,8 @@ public enum RequestError: Error, Equatable {
             return "Error decoding data from \(object)"
         case .unauthorized:
             return "Session expired"
+        case let .text(string):
+            return string
         default:
             return "Unknown error \(self)"
         }
