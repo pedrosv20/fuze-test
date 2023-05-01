@@ -54,7 +54,7 @@ public struct MatchDetailView: View {
                 
                 Text("VS")
                     .setCustomFontTo(.regular(size: DS.FontSize.small12))
-                    .foregroundColor(DS.Colors.white.opacity(0.20)) // DS opacity
+                    .foregroundColor(DS.Colors.white.opacity(0.20))
                 
                 if let opponents = match.opponents[safe: 1] {
                     teamView(opponents.opponent)
@@ -195,9 +195,3 @@ public struct MatchDetailView: View {
         .padding(.vertical)
     }
 }
-
-//struct MatchDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MatchDetailView.init(store: .init(initialState: .init(selectedMatch: "", matchData: .fixture()), reducer: MatchDetail()))
-//    }
-//}

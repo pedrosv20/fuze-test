@@ -267,7 +267,7 @@ public final class MatchesListTests: XCTestCase {
             $0.cstvMatchesService = .mock()
         }
 
-        // When
+        // When Then
         store.send(.matchSelected(matchIDToBeSelected))
     }
     
@@ -290,7 +290,7 @@ public final class MatchesListTests: XCTestCase {
             $0.cstvMatchesService = .mock()
         }
 
-        // When
+        // When Then
         store.send(.shouldShowDetail(false)) {
             $0.goToDetail = false
             $0.matchDetailSelected = nil

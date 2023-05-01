@@ -118,7 +118,7 @@ public struct MatchesListView: View {
                         
                         Text("VS")
                             .setCustomFontTo(.regular(size: DS.FontSize.small12))
-                            .foregroundColor(DS.Colors.white.opacity(0.20)) // TODO: - DS opacity
+                            .foregroundColor(DS.Colors.white.opacity(0.20))
                         
                         if let opponents = match.opponents[safe: 1] {
                             teamView(opponents.opponent)
@@ -186,7 +186,6 @@ public struct MatchesListView: View {
                             )
                             .setCustomFontTo(.bold(size: DS.FontSize.small10))
                             .foregroundColor(DS.Colors.white)
-//                            .minimumScaleFactor(0.8)
                         }
                 }
             }
