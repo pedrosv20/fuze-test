@@ -7,15 +7,18 @@ public struct MatchDetail: ReducerProtocol {
         var matchData: MatchesData
         var playersTeam1: [Players]?
         var playersTeam2: [Players]?
+        var error: CommonErrors?
 
         public init(
             matchData: MatchesData,
             playersTeam1: [Players]? = nil,
-            playersTeam2: [Players]? = nil
+            playersTeam2: [Players]? = nil,
+            error: CommonErrors? = nil
         ) {
             self.matchData = matchData
             self.playersTeam1 = playersTeam1
             self.playersTeam2 = playersTeam2
+            self.error = error
         }
     }
 
@@ -25,7 +28,9 @@ public struct MatchDetail: ReducerProtocol {
         case handleRequestedDataTeam1(Result<[Players], CommonErrors>)
         case requestDataTeam2
         case handleRequestedDataTeam2(Result<[Players], CommonErrors>)
+        case refresh
     }
+
     @Dependency(\.mainQueue) var mainQueue
     @Dependency(\.cstvMatchesService) var matchesService
 
@@ -51,7 +56,7 @@ public struct MatchDetail: ReducerProtocol {
                 return .none
                 
             case let .handleRequestedDataTeam1(.failure(error)):
-                print(error)
+                state.error = error
                 return .none
 
             case .requestDataTeam2:
@@ -63,12 +68,22 @@ public struct MatchDetail: ReducerProtocol {
                     .map(Action.handleRequestedDataTeam2)
 
             case let .handleRequestedDataTeam2(.success(playersTeam2)):
+                if state.playersTeam1 != nil {
+                    state.error = nil
+                }
+
                 state.playersTeam2 = playersTeam2
                 return .none
                 
             case let .handleRequestedDataTeam2(.failure(error)):
-                print(error)
+                state.error = error
                 return .none
+
+            case .refresh:
+                state.error = nil
+                state.playersTeam1 = nil
+                state.playersTeam2 = nil
+                return .init(value: .onAppear)
             }
         }
     }

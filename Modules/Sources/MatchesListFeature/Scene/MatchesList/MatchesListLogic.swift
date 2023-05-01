@@ -71,6 +71,7 @@ public struct MatchesList: ReducerProtocol {
                 return .none
             
             case .refresh:
+                state.error = nil
                 state.currentPage = 0
                 state.shouldResetData = true
                 return .init(value: .requestData)

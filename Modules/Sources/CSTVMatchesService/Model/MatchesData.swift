@@ -91,7 +91,7 @@ public struct MatchesData: Equatable {
 
 public extension MatchesData {
     static func fixture(
-        beginAt: Date = .now,
+        beginAt: Date = .init(timeIntervalSinceReferenceDate: 622_177_2000),
         id: String = UUID().uuidString,
         league: League = .fixture(),
         serie: Serie = .fixture(),

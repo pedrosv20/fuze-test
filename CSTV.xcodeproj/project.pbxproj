@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0711C3E529F94FCB0099BD79 /* CSTVMatchesServiceLive in Frameworks */ = {isa = PBXBuildFile; productRef = 0711C3E429F94FCB0099BD79 /* CSTVMatchesServiceLive */; };
+		0746788F29FF7C7B00396399 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 0746788E29FF7C7B00396399 /* Splash.png */; };
 		074AB33929F951B4008288B3 /* MatchesListFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 074AB33829F951B4008288B3 /* MatchesListFeature */; };
 		074AB33B29F951B8008288B3 /* CSTVMatchesService in Frameworks */ = {isa = PBXBuildFile; productRef = 074AB33A29F951B8008288B3 /* CSTVMatchesService */; };
 		07645E5629FC0A6100315B88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07645E5529FC0A6100315B88 /* ContentView.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		0712CFCC29FA5E420081D05C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0746788E29FF7C7B00396399 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Splash.png; path = ../../../../Downloads/Splash.png; sourceTree = "<group>"; };
 		0747A84129F94F730098D84B /* CSTVMatchesServiceLive */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CSTVMatchesServiceLive; path = Modules/Sources/CSTVMatchesServiceLive; sourceTree = "<group>"; };
 		07645E5529FC0A6100315B88 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		07645E5929FC83AD00315B88 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				0712CFCC29FA5E420081D05C /* Info.plist */,
 				07DECCD929F6EF9B0023708B /* CSTVApp.swift */,
 				07645E5529FC0A6100315B88 /* ContentView.swift */,
+				0746788E29FF7C7B00396399 /* Splash.png */,
 				07DECCDD29F6EF9E0023708B /* Assets.xcassets */,
 				07DECCDF29F6EF9E0023708B /* Preview Content */,
 			);
@@ -284,6 +287,7 @@
 				07645E7C29FC83AD00315B88 /* Roboto-Black.ttf in Resources */,
 				07645E7529FC83AD00315B88 /* Roboto-BoldItalic.ttf in Resources */,
 				07645E7129FC83AD00315B88 /* Roboto-Condensed.ttf in Resources */,
+				0746788F29FF7C7B00396399 /* Splash.png in Resources */,
 				07645E6D29FC83AD00315B88 /* Roboto-Regular.ttf in Resources */,
 				07645E6F29FC83AD00315B88 /* Roboto-BoldCondensed.ttf in Resources */,
 				07645E6C29FC83AD00315B88 /* Roboto-Light.ttf in Resources */,

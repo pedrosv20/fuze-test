@@ -12,9 +12,7 @@
 		<key>UIColorName</key>
 		<string>LaunchScreenBackgroundColor</string>
 		<key>UIImageName</key>
-		<string>FuzeLogo</string>
-		<key>UIImageRespectsSafeAreaInsets</key>
-		<true/>
+		<string>Splash</string>
 	</dict>
 </dict>
 </plist>

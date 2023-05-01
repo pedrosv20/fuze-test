@@ -16,7 +16,13 @@ public struct MatchDetailView: View {
             ZStack {
                 DS.Colors.mainBackground
                     .ignoresSafeArea()
-                if
+                if let error = viewStore.state.error {
+                    ErrorView(
+                        error: error.customMessage, retryButtonAction: {
+                            viewStore.send(.refresh)
+                        }
+                    )
+                } else if
                     let playersTeam1 = viewStore.playersTeam1,
                     let playersTeam2 = viewStore.playersTeam2 {
                     VStack {

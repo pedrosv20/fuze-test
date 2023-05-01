@@ -19,30 +19,14 @@ public struct MatchesListView: View {
                         .ignoresSafeArea()
                     
                     if let error = viewStore.state.error {
-                        VStack(spacing: DS.Spacing.m) {
-                            Text("OOPS, algo deu errado")
-                                .setCustomFontTo(.bold(size: DS.FontSize.xm))
-                                .foregroundColor(DS.Colors.white)
-                            
-                            Text(error.customMessage)
-                                .setCustomFontTo(.regular(size: DS.FontSize.medium))
-                                .foregroundColor(DS.Colors.white)
-                            
-                            Button(
-                                action: {
-                                    CSTVMatchesService.getMatchesListResponseToBeReturned = Just([.fixture()])
-                                        .setFailureType(to: CommonErrors.self)
-                                        .eraseToAnyPublisher()
-                                    viewStore.send(.refresh)
-                                }, label: {
-                                    Text("Tente novamente")
-                                        .setCustomFontTo(.bold(size: DS.FontSize.medium))
-                                }
-                            )
-                            .padding()
-                            .background(DS.Colors.rowBackground)
-                            .clipShape(Capsule())
-                        } 
+                        ErrorView(
+                            error: error.customMessage, retryButtonAction: {
+                                CSTVMatchesService.getMatchesListResponseToBeReturned = Just([.fixture()])
+                                    .setFailureType(to: CommonErrors.self)
+                                    .eraseToAnyPublisher()
+                                viewStore.send(.refresh)
+                            }
+                        )
                     }
                     else if viewStore.state.matchesData.isEmpty {
                         ProgressView()

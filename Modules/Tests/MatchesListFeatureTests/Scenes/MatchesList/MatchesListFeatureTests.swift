@@ -201,6 +201,7 @@ public final class MatchesListTests: XCTestCase {
             .eraseToAnyPublisher()
 
         store.send(.refresh) {
+            $0.error = nil
             $0.currentPage = 0
             $0.shouldResetData = true
         }
