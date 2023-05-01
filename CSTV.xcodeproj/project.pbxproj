@@ -67,6 +67,7 @@
 		07645E6829FC83AD00315B88 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		07645E6929FC83AD00315B88 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		07645E6A29FC83AD00315B88 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		07645E7D29FF2B9500315B88 /* CSTV.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = CSTV.xctestplan; path = "/Users/pedrovargas/Documents/Fuze/fuze-test/CSTVTests/CSTV.xctestplan"; sourceTree = "<absolute>"; };
 		07DECCD629F6EF9B0023708B /* CSTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07DECCD929F6EF9B0023708B /* CSTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVApp.swift; sourceTree = "<group>"; };
 		07DECCDD29F6EF9E0023708B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -181,6 +182,7 @@
 		07DECCE929F6EF9E0023708B /* CSTVTests */ = {
 			isa = PBXGroup;
 			children = (
+				07645E7D29FF2B9500315B88 /* CSTV.xctestplan */,
 				07DECCEA29F6EF9E0023708B /* CSGO_LiveMatchesTests.swift */,
 			);
 			path = CSTVTests;

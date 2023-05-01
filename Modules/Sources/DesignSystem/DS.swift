@@ -29,6 +29,10 @@ public struct DS {
         public static let small12: CGFloat = 12
         /// 16
         public static let medium: CGFloat = 16
+        /// 24
+        public static let xm: CGFloat = 24
+        // 32
+        public static let l: CGFloat = 32
     }
 
     public struct CornerRadius {

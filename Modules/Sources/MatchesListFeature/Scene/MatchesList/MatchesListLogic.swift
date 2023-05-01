@@ -5,29 +5,38 @@ import Foundation
 public struct MatchesList: ReducerProtocol {
     public struct State: Equatable {
         var matchesData: [MatchesData]
-        var goToDetail = false
-        var shouldResetData = false
-        var matchDetailSelected: MatchesData? = nil
+        var goToDetail: Bool
+        var shouldResetData: Bool
+        var matchDetailSelected: MatchesData?
         var currentPage: Int
         var finishDownloading: Bool
+        var error: CommonErrors?
 
         public init(
             currentPage: Int = 0,
             matchesData: [MatchesData],
-            finishDownloading: Bool = false
+            finishDownloading: Bool = false,
+            goToDetail: Bool = false,
+            shouldResetData: Bool = false,
+            matchDetailSelected: MatchesData? = nil,
+            error: CommonErrors? = nil
         ) {
             self.currentPage = currentPage
             self.matchesData = matchesData
             self.finishDownloading = finishDownloading
+            self.goToDetail = goToDetail
+            self.shouldResetData = shouldResetData
+            self.matchDetailSelected = matchDetailSelected
+            self.error = error
         }
     }
 
-    public enum Action {
+    public enum Action: Equatable {
         case onAppear
         case requestData
         case handleRequestedData(Result<[MatchesData], CommonErrors>)
         case refresh
-        case matchselected(String)
+        case matchSelected(String)
         case shouldShowDetail(Bool)
     }
     @Dependency(\.mainQueue) var mainQueue
@@ -43,6 +52,8 @@ public struct MatchesList: ReducerProtocol {
                 
 
             case let .handleRequestedData(.success(model)):
+                state.error = nil
+                
                 if state.shouldResetData {
                     state.matchesData = []
                     state.shouldResetData = false
@@ -56,7 +67,7 @@ public struct MatchesList: ReducerProtocol {
                 return .none
                 
             case let .handleRequestedData(.failure(error)):
-                print(error.localizedDescription)
+                state.error = error
                 return .none
             
             case .refresh:
@@ -64,7 +75,7 @@ public struct MatchesList: ReducerProtocol {
                 state.shouldResetData = true
                 return .init(value: .requestData)
             
-            case let .matchselected(id):
+            case let .matchSelected(id):
                 guard let matchDetail = state.matchesData.filter({ $0.id == id }).first else {
                     return .none
                 }

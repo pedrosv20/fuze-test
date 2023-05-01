@@ -7,6 +7,7 @@ public struct MatchDetail: ReducerProtocol {
         var matchData: MatchesData
         var playersTeam1: [Players]?
         var playersTeam2: [Players]?
+
         public init(
             matchData: MatchesData,
             playersTeam1: [Players]? = nil,

@@ -2,7 +2,6 @@ import Foundation
 
 public enum CommonErrors: Error, Equatable {
     case text(String)
-    case decodingError
     
     public init(_ error: Error) {
         self = .text(error.localizedDescription)
@@ -10,6 +9,13 @@ public enum CommonErrors: Error, Equatable {
 
     public init(_ error: String) {
         self = .text(error)
+    }
+    
+    public var customMessage: String {
+        switch self {
+        case let .text(string):
+            return string
+        }
     }
     
 }

@@ -74,7 +74,7 @@ fileprivate extension Target {
     
     static var matchesListFeatureTests = Target.testTarget(
         name: "MatchesListFeatureTests",
-        dependencies: ["MatchesListFeature"]
+        dependencies: ["MatchesListFeature", "CSTVMatchesService"]
     )
 }
 
